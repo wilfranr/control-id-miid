@@ -530,7 +530,6 @@ class ControlIdGUI:
         """Abrir ventana de configuración."""
         try:
             config_window = ConfiguracionWindow(self.root, self)
-            config_window.grab_set()  # Hacer modal
         except Exception as e:
             self.log_message(f"Error al abrir configuración: {str(e)}")
     
@@ -992,7 +991,7 @@ class ConfiguracionWindow:
                     'usuario': 'usuario',
                     'contraseña': 'contraseña',
                     'stored_procedure': 'dbo.GetMatchIDImgFaceByCASBid',
-                    'business_context': 'MatchId'
+                    'business_context': 'Bytte'
                 },
                 'control_id': {
                     'base_url': 'http://192.168.3.37',
