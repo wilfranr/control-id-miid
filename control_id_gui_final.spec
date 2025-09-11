@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 # Rutas
-proj_dir = Path(__file__).parent
+proj_dir = Path.cwd()
 assets_dir = proj_dir / 'assets'
 images_dir = assets_dir / 'images'
 
@@ -14,12 +14,19 @@ a = Analysis(
     ['control_id_gui_final.py'],
     pathex=[str(proj_dir)],
     binaries=[],
-    datas=[
-        (str(images_dir / 'logo.png'), 'assets/images'),
+    datas=[t for t in [
+        (str(images_dir / 'logo.png'), 'assets/images') if (images_dir / 'logo.png').exists() else None,
         # Incluir config.py si existe en la raíz al momento del build
-        (str(proj_dir / 'config.py'), '.' ) if (proj_dir / 'config.py').exists() else (),
+        (str(proj_dir / 'config.py'), '.') if (proj_dir / 'config.py').exists() else None,
+    ] if t],
+    hiddenimports=[
+        'GetUserMiID',
+        'GetUserByDocument',
+        'flujo_usuario_inteligente',
+        'download_image_to_sql_temp',
+        'config',
+        'pyodbc',
     ],
-    hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

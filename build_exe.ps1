@@ -22,7 +22,15 @@ if (Test-Path dist) { Remove-Item -Recurse -Force dist }
 
 # Construir
 if ($OneFile) {
-  pyinstaller --clean --noconfirm --onefile --windowed control_id_gui_final.spec
+  # Build onefile sin .spec (PyInstaller no acepta --onefile con .spec)
+  $datas = @()
+  if (Test-Path assets\images\logo.png) { $datas += "assets/images/logo.png;assets/images" }
+  if (Test-Path config.py) { $datas += "config.py;." }
+
+  $addDataArgs = @()
+  foreach ($d in $datas) { $addDataArgs += @('--add-data', $d) }
+
+  pyinstaller --clean --noconfirm --onefile --windowed --name ControlIdGUI @addDataArgs control_id_gui_final.py
 } else {
   pyinstaller --clean --noconfirm control_id_gui_final.spec
 }
