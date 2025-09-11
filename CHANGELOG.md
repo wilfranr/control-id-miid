@@ -2,6 +2,18 @@
 
 Todas las modificaciones relevantes de este proyecto serán documentadas en este archivo.
 
+## [1.2.0] - 2025-09-11
+### Añadido
+- Empaquetado para Windows con PyInstaller: ejecutable en carpeta y onefile.
+- Scripts de build: `build_exe.ps1` y `build_exe.bat`.
+- Archivo `.spec` con recursos y `hiddenimports`.
+- Dependencia `pyodbc` para Azure SQL.
+
+### Notas de distribución
+- Onefile: `dist/ControlIdGUI.exe` (recomendado para compartir).
+- Carpeta: `dist/ControlIdGUI/` (incluye recursos y `config.py`).
+- Requiere ODBC Driver 17/18 para SQL Server en el equipo destino.
+
 ## [1.1.0] - 2025-09-11
 ### Añadido
 - Modal de pruebas de conexión en Config con logs en tiempo real.
