@@ -994,9 +994,9 @@ class ConfiguracionWindow:
                     'business_context': 'Bytte'
                 },
                 'control_id': {
-                    'base_url': 'http://192.168.3.37',
-                    'login': 'admin',
-                    'password': 'admin'
+                    'base_url': '',
+                    'login': '',
+                    'password': ''
                 },
                 'carpetas': {
                     'carpeta_local_temp': 'C:\\temp\\Imagenes_Pro',
@@ -1281,9 +1281,10 @@ CARPETAS_CONFIG = {{
                 import config as _cfg
                 _cfg = importlib.reload(_cfg)
                 # Actualizar variables globales utilizadas en la app
-                global AZURE_CONFIG, CARPETAS_CONFIG
+                global AZURE_CONFIG, CARPETAS_CONFIG, CONTROL_ID_CONFIG
                 AZURE_CONFIG = _cfg.AZURE_CONFIG
                 CARPETAS_CONFIG = _cfg.CARPETAS_CONFIG
+                CONTROL_ID_CONFIG = _cfg.CONTROL_ID_CONFIG
                 # Actualizar configuración usada por el flujo (peticiones HTTP)
                 if 'set_control_id_config' in globals():
                     set_control_id_config(_cfg.CONTROL_ID_CONFIG)
