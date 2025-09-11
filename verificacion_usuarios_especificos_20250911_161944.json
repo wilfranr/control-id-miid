@@ -1,0 +1,170 @@
+{
+  "timestamp": "20250911_161944",
+  "usuarios_verificados": 20,
+  "usuarios_existentes": 0,
+  "usuarios_con_imagen": 0,
+  "usuarios_sin_imagen": 0,
+  "porcentaje_con_imagen": 0,
+  "detalles": [
+    {
+      "user_id": 48,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 49,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 50,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 51,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 52,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 53,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 54,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 55,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 56,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 57,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 950,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 951,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 952,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 953,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 954,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 955,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 956,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 957,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 958,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    },
+    {
+      "user_id": 959,
+      "existe": false,
+      "nombre": "No existe",
+      "documento": "No existe",
+      "tiene_imagen": false,
+      "detalle_imagen": "Usuario no existe"
+    }
+  ]
+}

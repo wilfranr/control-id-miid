@@ -1,0 +1,7679 @@
+{
+  "estadisticas": {
+    "total": 2000,
+    "exitosos": 621,
+    "con_errores": 16,
+    "no_encontrados_miid": 15,
+    "errores_creacion": 0,
+    "imagenes_asignadas": 621,
+    "grupos_asignados": 0,
+    "usuarios_actualizados": 0
+  },
+  "estadisticas_tiempo": {
+    "tiempo_total_segundos": 814.0837352275848,
+    "tiempo_total_formateado": "13m 34s",
+    "tiempo_promedio_por_usuario": 1.0599067196179783,
+    "tiempo_minimo_usuario": 0.0,
+    "tiempo_maximo_usuario": 2.060495138168335,
+    "usuarios_procesados": 637,
+    "usuarios_exitosos": 621,
+    "usuarios_actualizados": 0,
+    "usuarios_errores": 16,
+    "porcentaje_exito": 97.48822605965462,
+    "velocidad_usuarios_por_minuto": 46.94848741734809,
+    "cpu_uso_promedio": 90.6,
+    "memoria_uso_mb": 13785.50390625,
+    "memoria_total_mb": 16261.2265625
+  },
+  "resultados_detallados": [
+    {
+      "documento": "1107008460",
+      "indice": 1,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "48",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1233188921",
+      "indice": 2,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "49",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1003157606",
+      "indice": 3,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "50",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80219917",
+      "indice": 4,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "51",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8706167",
+      "indice": 5,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "52",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91363616",
+      "indice": 6,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "53",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "85472979",
+      "indice": 7,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "54",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032363895",
+      "indice": 8,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "55",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52360765",
+      "indice": 9,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "56",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1094912971",
+      "indice": 10,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "57",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1096225509",
+      "indice": 11,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "58",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020719896",
+      "indice": 12,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "59",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19165552",
+      "indice": 13,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "60",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91499740",
+      "indice": 14,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "61",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80421232",
+      "indice": 15,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "62",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1001097249",
+      "indice": 16,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "63",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79509728",
+      "indice": 17,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "64",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014659701",
+      "indice": 18,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "65",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1004871611",
+      "indice": 19,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "66",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "32697295",
+      "indice": 20,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "67",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1111544455",
+      "indice": 21,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "68",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "63320524",
+      "indice": 22,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "69",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1111544650",
+      "indice": 23,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "70",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79866790",
+      "indice": 24,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "71",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1015427228",
+      "indice": 25,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "72",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "34533509",
+      "indice": 26,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "73",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1045170649",
+      "indice": 27,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "74",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018416714",
+      "indice": 28,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "75",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91356847",
+      "indice": 29,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "76",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "7562587",
+      "indice": 30,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "77",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80833879",
+      "indice": 31,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "78",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79648071",
+      "indice": 32,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "79",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "9976598",
+      "indice": 33,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "80",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42152114",
+      "indice": 34,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "81",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1025066460",
+      "indice": 35,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "82",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39446222",
+      "indice": 36,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "83",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79058510",
+      "indice": 37,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "84",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79793946",
+      "indice": 38,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "85",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1016026840",
+      "indice": 39,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "86",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "53893532",
+      "indice": 40,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "87",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "53166244",
+      "indice": 41,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "88",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098650962",
+      "indice": 42,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "89",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "7707085",
+      "indice": 43,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "90",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79803073",
+      "indice": 44,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "91",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80283994",
+      "indice": 45,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "92",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1152684974",
+      "indice": 46,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "93",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1015417030",
+      "indice": 47,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "94",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1128266041",
+      "indice": 48,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "95",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1037604570",
+      "indice": 49,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "96",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1023879468",
+      "indice": 50,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "97",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1027151099",
+      "indice": 51,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "98",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1109663638",
+      "indice": 52,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "99",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19367529",
+      "indice": 53,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "100",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1121211680",
+      "indice": 54,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "101",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032416831",
+      "indice": 55,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "102",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "24947014",
+      "indice": 56,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "103",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80471895",
+      "indice": 57,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "104",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1023891267",
+      "indice": 58,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "105",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014858572",
+      "indice": 59,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "106",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1034307776",
+      "indice": 60,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "107",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52212874",
+      "indice": 61,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "108",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "21176794",
+      "indice": 62,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "109",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1002952255",
+      "indice": 63,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "110",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "94486263",
+      "indice": 64,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "111",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "94427201",
+      "indice": 65,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "112",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1069583128",
+      "indice": 66,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "113",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1085336640",
+      "indice": 67,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "114",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014218270",
+      "indice": 68,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "115",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "10303084",
+      "indice": 69,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "116",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "98628524",
+      "indice": 70,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "117",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1021633387",
+      "indice": 71,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "118",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1015427171",
+      "indice": 72,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "119",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37753682",
+      "indice": 73,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "120",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1044912313",
+      "indice": 74,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "121",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80870509",
+      "indice": 75,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "122",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020772547",
+      "indice": 76,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "123",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37394180",
+      "indice": 77,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "124",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1031650218",
+      "indice": 78,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "125",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1022336421",
+      "indice": 79,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "126",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52026473",
+      "indice": 80,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "127",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1074131384",
+      "indice": 81,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "128",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1019842537",
+      "indice": 82,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "129",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80814984",
+      "indice": 83,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "130",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51918889",
+      "indice": 84,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "131",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1016016250",
+      "indice": 85,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "132",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1073230303",
+      "indice": 86,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "133",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1094886841",
+      "indice": 87,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "134",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1066866300",
+      "indice": 88,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "135",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1007702264",
+      "indice": 89,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "136",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1095937392",
+      "indice": 90,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "137",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014859393",
+      "indice": 91,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "138",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "22478263",
+      "indice": 92,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "139",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1095802975",
+      "indice": 93,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "140",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "2000011200",
+      "indice": 94,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "141",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "29015108",
+      "indice": 95,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "142",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1022399242",
+      "indice": 96,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "143",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1113666540",
+      "indice": 97,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "144",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1010760825",
+      "indice": 98,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "145",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42889368",
+      "indice": 99,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "146",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51690917",
+      "indice": 100,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "147",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80416768",
+      "indice": 101,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "148",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1002364513",
+      "indice": 102,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "149",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19093760",
+      "indice": 103,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "150",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1088353061",
+      "indice": 104,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "151",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "14703461",
+      "indice": 105,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "152",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "30282996",
+      "indice": 106,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "153",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80063436",
+      "indice": 107,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "154",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1111479745",
+      "indice": 108,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "155",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "38986009",
+      "indice": 109,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "156",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "32740778",
+      "indice": 110,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "157",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1062955533",
+      "indice": 111,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "158",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8666910",
+      "indice": 112,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "159",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014185135",
+      "indice": 113,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "160",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1013595282",
+      "indice": 114,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "161",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1019034244",
+      "indice": 115,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "162",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1104696550",
+      "indice": 116,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "163",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91491194",
+      "indice": 117,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "164",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1071628765",
+      "indice": 118,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "165",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80208223",
+      "indice": 119,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "166",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39791868",
+      "indice": 120,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "167",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52978638",
+      "indice": 121,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "168",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52927124",
+      "indice": 122,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "169",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1017183349",
+      "indice": 123,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "170",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1035416378",
+      "indice": 124,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "171",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79155214",
+      "indice": 125,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "172",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42055614",
+      "indice": 126,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "173",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "27502182",
+      "indice": 127,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "174",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098681054",
+      "indice": 128,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "175",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80189830",
+      "indice": 129,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "176",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "93393920",
+      "indice": 130,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "177",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52372896",
+      "indice": 131,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "178",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "29179635",
+      "indice": 132,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "179",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37862871",
+      "indice": 133,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "180",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1007253548",
+      "indice": 134,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "181",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "94071562",
+      "indice": 135,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "182",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51821877",
+      "indice": 136,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "183",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "603805",
+      "indice": 137,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "184",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "36562211",
+      "indice": 138,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "185",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "45693690",
+      "indice": 139,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "186",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "16239840",
+      "indice": 140,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "187",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1106738731",
+      "indice": 141,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "188",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52515885",
+      "indice": 142,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "189",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1096946351",
+      "indice": 143,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "190",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1143153783",
+      "indice": 144,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "191",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1073502197",
+      "indice": 145,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "192",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "98552799",
+      "indice": 146,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "193",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1002368055",
+      "indice": 147,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "194",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032410531",
+      "indice": 148,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "195",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1025060719",
+      "indice": 149,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "196",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "43684209",
+      "indice": 150,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "197",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "7475306",
+      "indice": 151,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "198",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1102829273",
+      "indice": 152,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "199",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1075232421",
+      "indice": 153,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "200",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014194838",
+      "indice": 154,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "201",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80745815",
+      "indice": 155,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "202",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8398042",
+      "indice": 156,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "203",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "4377374",
+      "indice": 157,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "204",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "49778925",
+      "indice": 158,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "205",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "22738234",
+      "indice": 159,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "206",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1233690154",
+      "indice": 160,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "207",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020716294",
+      "indice": 161,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "208",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "10134189",
+      "indice": 162,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "209",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "70129530",
+      "indice": 163,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "210",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79917719",
+      "indice": 164,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "211",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80768897",
+      "indice": 165,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "212",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098801991",
+      "indice": 166,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "213",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1026267178",
+      "indice": 167,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "214",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1022329523",
+      "indice": 168,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "215",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52286824",
+      "indice": 169,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "216",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "46661915",
+      "indice": 170,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "217",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1102148554",
+      "indice": 171,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "218",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "65773968",
+      "indice": 172,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "219",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79238016",
+      "indice": 173,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "220",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80186381",
+      "indice": 174,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "221",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79505215",
+      "indice": 175,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "222",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79799063",
+      "indice": 176,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "223",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020777355",
+      "indice": 177,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "224",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80125651",
+      "indice": 178,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "225",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "63300891",
+      "indice": 179,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "226",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014214692",
+      "indice": 180,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "227",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "71481520",
+      "indice": 181,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "228",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80407311",
+      "indice": 182,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "229",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1233500265",
+      "indice": 183,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "230",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "30565496",
+      "indice": 184,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "231",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8027587",
+      "indice": 185,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "232",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "5777855",
+      "indice": 186,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "233",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1031644596",
+      "indice": 187,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "234",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032491659",
+      "indice": 188,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "235",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018514394",
+      "indice": 189,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "236",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1116803169",
+      "indice": 190,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "237",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "32632238",
+      "indice": 191,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "238",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80027753",
+      "indice": 192,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "239",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1122118452",
+      "indice": 193,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "240",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020809505",
+      "indice": 194,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "241",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1000944236",
+      "indice": 195,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "242",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1090396332",
+      "indice": 196,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "243",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "93290357",
+      "indice": 197,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "244",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "13926567",
+      "indice": 198,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "245",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1107975535",
+      "indice": 199,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "246",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1002031646",
+      "indice": 200,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "247",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "11428309",
+      "indice": 201,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "248",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1054541005",
+      "indice": 202,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "249",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19426871",
+      "indice": 203,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "250",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1126256358",
+      "indice": 204,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "251",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014197403",
+      "indice": 205,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "252",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51630939",
+      "indice": 206,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "253",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1116258233",
+      "indice": 207,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "254",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80085096",
+      "indice": 208,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "255",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1005719856",
+      "indice": 209,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "256",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1040371302",
+      "indice": 210,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "257",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "43261085",
+      "indice": 211,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "258",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "28562133",
+      "indice": 212,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "259",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1077082464",
+      "indice": 213,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "260",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "60387714",
+      "indice": 214,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "261",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91281497",
+      "indice": 215,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "262",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "43258472",
+      "indice": 216,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "263",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80797577",
+      "indice": 217,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "264",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51629371",
+      "indice": 218,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "265",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "32559569",
+      "indice": 219,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "266",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52506241",
+      "indice": 220,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "267",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "43191663",
+      "indice": 221,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "268",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79555536",
+      "indice": 222,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "269",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1096231278",
+      "indice": 223,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "270",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80242088",
+      "indice": 224,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "271",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "10023149",
+      "indice": 225,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "272",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "31919769",
+      "indice": 226,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "273",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "30274407",
+      "indice": 227,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "274",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "70081645",
+      "indice": 228,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "275",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1050959842",
+      "indice": 229,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "276",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "94509996",
+      "indice": 230,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "277",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1000572197",
+      "indice": 231,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "278",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51893003",
+      "indice": 232,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "279",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1010052699",
+      "indice": 233,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "280",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1015186448",
+      "indice": 234,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "281",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "72095782",
+      "indice": 235,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "282",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "66918633",
+      "indice": 236,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "283",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1036646339",
+      "indice": 237,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "284",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "133313",
+      "indice": 238,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "285",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "35494852",
+      "indice": 239,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "286",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1045691545",
+      "indice": 240,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "287",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "73193482",
+      "indice": 241,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "288",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1088024751",
+      "indice": 242,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "289",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8691731",
+      "indice": 243,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "290",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032368216",
+      "indice": 244,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "291",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1130619043",
+      "indice": 245,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "292",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1112770831",
+      "indice": 246,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "293",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1016947400",
+      "indice": 247,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "294",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "31267717",
+      "indice": 248,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "295",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "6273104",
+      "indice": 249,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "296",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79795205",
+      "indice": 250,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "297",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1031127496",
+      "indice": 251,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "298",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018406720",
+      "indice": 252,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "299",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "72298719",
+      "indice": 253,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "300",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80777358",
+      "indice": 254,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "301",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37656698",
+      "indice": 255,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "302",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "75078240",
+      "indice": 256,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "303",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "41963886",
+      "indice": 257,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "304",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1031648773",
+      "indice": 258,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "305",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91150501",
+      "indice": 259,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "306",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52868499",
+      "indice": 260,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "307",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "16717975",
+      "indice": 261,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "308",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "3186115",
+      "indice": 262,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "309",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52538828",
+      "indice": 263,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "310",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "29663252",
+      "indice": 264,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "311",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1107837377",
+      "indice": 265,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "312",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "18920195",
+      "indice": 266,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "313",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79734693",
+      "indice": 267,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "314",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1144085267",
+      "indice": 268,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "315",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "41795574",
+      "indice": 269,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "316",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39748845",
+      "indice": 270,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "317",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1023907760",
+      "indice": 271,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "318",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "35199804",
+      "indice": 272,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "319",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "20737602",
+      "indice": 273,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "320",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "43504235",
+      "indice": 274,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "321",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52832344",
+      "indice": 275,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "322",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52787806",
+      "indice": 276,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "323",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51982792",
+      "indice": 277,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "324",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018448199",
+      "indice": 278,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "325",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098674404",
+      "indice": 279,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "326",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014978066",
+      "indice": 280,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "327",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1037651166",
+      "indice": 281,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "328",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "2000015364",
+      "indice": 282,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "329",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52079359",
+      "indice": 283,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "330",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79131116",
+      "indice": 284,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "331",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19315376",
+      "indice": 285,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "332",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "16591789",
+      "indice": 286,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "333",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1016101875",
+      "indice": 287,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "334",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "320337",
+      "indice": 288,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "335",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1015465007",
+      "indice": 289,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "336",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52165825",
+      "indice": 290,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "337",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "63320779",
+      "indice": 291,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "338",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80927725",
+      "indice": 292,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "339",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "27686922",
+      "indice": 293,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "340",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "34542768",
+      "indice": 294,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "341",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "93293979",
+      "indice": 295,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "342",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "29304929",
+      "indice": 296,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "343",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91245625",
+      "indice": 297,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "344",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1037657898",
+      "indice": 298,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "345",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1024535130",
+      "indice": 299,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "346",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098768622",
+      "indice": 300,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "347",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80933012",
+      "indice": 301,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "348",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80722828",
+      "indice": 302,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "349",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1022944908",
+      "indice": 303,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "350",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "10241061",
+      "indice": 304,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "351",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "34562140",
+      "indice": 305,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "352",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1109115373",
+      "indice": 306,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "353",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "75094610",
+      "indice": 307,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "354",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1151197409",
+      "indice": 308,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "355",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1000185977",
+      "indice": 309,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "356",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "41485130",
+      "indice": 310,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "357",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "31294691",
+      "indice": 311,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "358",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "E23001405",
+      "indice": 312,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "359",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52698266",
+      "indice": 313,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "360",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "17844643",
+      "indice": 314,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "361",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "10180229",
+      "indice": 315,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "362",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42884494",
+      "indice": 316,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "363",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "51602645",
+      "indice": 317,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "364",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1050718605",
+      "indice": 318,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "365",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "43709174",
+      "indice": 319,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "366",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37829442",
+      "indice": 320,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "367",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1019025795",
+      "indice": 321,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "368",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52748556",
+      "indice": 322,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "369",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52270814",
+      "indice": 323,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "370",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "38862999",
+      "indice": 324,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "371",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1082950745",
+      "indice": 325,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "372",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1013613814",
+      "indice": 326,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "373",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "74433478",
+      "indice": 327,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "374",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "63322744",
+      "indice": 328,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "375",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19308720",
+      "indice": 329,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "376",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52234372",
+      "indice": 330,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "377",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37547865",
+      "indice": 331,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "378",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1095927315",
+      "indice": 332,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "379",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "2000012388",
+      "indice": 333,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "380",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "20627226",
+      "indice": 334,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "381",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "18512302",
+      "indice": 335,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "382",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1234192673",
+      "indice": 336,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "383",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80195282",
+      "indice": 337,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "384",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "66947409",
+      "indice": 338,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "385",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1036250929",
+      "indice": 339,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "386",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1148219919",
+      "indice": 340,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "387",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "41936207",
+      "indice": 341,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "388",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "31939915",
+      "indice": 342,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "389",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020771735",
+      "indice": 343,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "390",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1026556370",
+      "indice": 344,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "391",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "31255596",
+      "indice": 345,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "392",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79988629",
+      "indice": 346,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "393",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018479101",
+      "indice": 347,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "394",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1022952568",
+      "indice": 348,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "395",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1193585852",
+      "indice": 349,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "396",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80027098",
+      "indice": 350,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "397",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098652555",
+      "indice": 351,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "398",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1031644824",
+      "indice": 352,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "399",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79347315",
+      "indice": 353,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "400",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1192790398",
+      "indice": 354,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "401",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1143828888",
+      "indice": 355,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "402",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "7892014",
+      "indice": 356,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "403",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018427108",
+      "indice": 357,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "404",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "7217003",
+      "indice": 358,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "405",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1070955298",
+      "indice": 359,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "406",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "71365298",
+      "indice": 360,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "407",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1193278237",
+      "indice": 361,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "408",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "3833345",
+      "indice": 362,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "409",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "72190818",
+      "indice": 363,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "410",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91207043",
+      "indice": 364,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "411",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1031647578",
+      "indice": 365,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "412",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "86064305",
+      "indice": 366,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "413",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1143843680",
+      "indice": 367,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "414",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1014202580",
+      "indice": 368,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "415",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1043969464",
+      "indice": 369,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "416",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "53090372",
+      "indice": 370,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "417",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39521785",
+      "indice": 371,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "418",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1061735571",
+      "indice": 372,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "419",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "16926940",
+      "indice": 373,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "420",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1193526747",
+      "indice": 374,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "421",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1072655802",
+      "indice": 375,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "422",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79783034",
+      "indice": 376,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "423",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "53080591",
+      "indice": 377,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "424",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "6557211",
+      "indice": 378,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "425",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "10022351",
+      "indice": 379,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "426",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "13350716",
+      "indice": 380,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "427",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52434779",
+      "indice": 381,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "428",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "31447859",
+      "indice": 382,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "429",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "74323572",
+      "indice": 383,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "430",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79798806",
+      "indice": 384,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "431",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "11204757",
+      "indice": 385,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "432",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "43744412",
+      "indice": 386,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "433",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91293877",
+      "indice": 387,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "434",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91213103",
+      "indice": 388,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "435",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1144087514",
+      "indice": 389,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "436",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1000596305",
+      "indice": 390,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "437",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1024482510",
+      "indice": 391,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "438",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1011081082",
+      "indice": 392,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "439",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80844518",
+      "indice": 393,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "440",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1109544659",
+      "indice": 394,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "441",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "24603612",
+      "indice": 395,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "442",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79955247",
+      "indice": 396,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "443",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "78732119",
+      "indice": 397,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "444",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1100968679",
+      "indice": 398,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "445",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "13068700",
+      "indice": 399,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "446",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "7774489",
+      "indice": 400,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "447",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91203986",
+      "indice": 401,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "448",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19253584",
+      "indice": 402,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "449",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1094894552",
+      "indice": 403,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "450",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1094915400",
+      "indice": 404,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "451",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "59314568",
+      "indice": 405,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "452",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1112039685",
+      "indice": 406,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "453",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1144097999",
+      "indice": 407,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "454",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42881990",
+      "indice": 408,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "455",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91496836",
+      "indice": 409,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "456",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8719647",
+      "indice": 410,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "457",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1144028486",
+      "indice": 411,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "458",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91283208",
+      "indice": 412,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "459",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1140889933",
+      "indice": 413,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "460",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "10283795",
+      "indice": 414,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "461",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1108934037",
+      "indice": 415,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "462",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1026267448",
+      "indice": 416,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "463",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1025531528",
+      "indice": 417,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "464",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1006248433",
+      "indice": 418,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "465",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1039456130",
+      "indice": 419,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "466",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "3146544",
+      "indice": 420,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "467",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19191910",
+      "indice": 421,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "468",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80818802",
+      "indice": 422,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "469",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "35312627",
+      "indice": 423,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "470",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1128051127",
+      "indice": 424,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "471",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1059448738",
+      "indice": 425,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "472",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91281826",
+      "indice": 426,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "473",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "41907726",
+      "indice": 427,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "474",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80409676",
+      "indice": 428,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "475",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1069712436",
+      "indice": 429,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "476",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1043434518",
+      "indice": 430,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "477",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1136912325",
+      "indice": 431,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "478",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42158380",
+      "indice": 432,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "479",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19456554",
+      "indice": 433,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "480",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1128456901",
+      "indice": 434,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "481",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "24484615",
+      "indice": 435,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "482",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91517040",
+      "indice": 436,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "483",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79940004",
+      "indice": 437,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "484",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1013339680",
+      "indice": 438,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "485",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1021394210",
+      "indice": 439,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "486",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032430994",
+      "indice": 440,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "487",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8028756",
+      "indice": 441,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "488",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "72221615",
+      "indice": 442,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "489",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39683451",
+      "indice": 443,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "490",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "30361520",
+      "indice": 444,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "491",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1072641731",
+      "indice": 445,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "492",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79213206",
+      "indice": 446,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "493",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098819978",
+      "indice": 447,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "494",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "35897494",
+      "indice": 448,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "495",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "78767976",
+      "indice": 449,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "496",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "85473991",
+      "indice": 450,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "497",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1049606785",
+      "indice": 451,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "498",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "71627350",
+      "indice": 452,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "499",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "94332098",
+      "indice": 453,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "500",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1118540476",
+      "indice": 454,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "501",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19175856",
+      "indice": 455,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "502",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "34567830",
+      "indice": 456,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "503",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91212691",
+      "indice": 457,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "504",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "31533025",
+      "indice": 458,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "505",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80211582",
+      "indice": 459,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "506",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "16139552",
+      "indice": 460,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "507",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "323828",
+      "indice": 461,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "508",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1139874360",
+      "indice": 462,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "509",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1048936214",
+      "indice": 463,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "510",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "72005623",
+      "indice": 464,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "511",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1085255424",
+      "indice": 465,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "512",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1033759283",
+      "indice": 466,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "513",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1110289345",
+      "indice": 467,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "514",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020736891",
+      "indice": 468,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "515",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "74182425",
+      "indice": 469,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "516",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1012419515",
+      "indice": 470,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "517",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1116040472",
+      "indice": 471,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "518",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "71277168",
+      "indice": 472,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "519",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79693695",
+      "indice": 473,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "520",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1000329823",
+      "indice": 474,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "521",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19079942",
+      "indice": 475,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "522",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79532570",
+      "indice": 476,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "523",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1012428256",
+      "indice": 477,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "524",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "73098246",
+      "indice": 478,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "525",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "98136911",
+      "indice": 479,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "526",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52268889",
+      "indice": 480,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "527",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1108639599",
+      "indice": 481,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "528",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "53154175",
+      "indice": 482,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "529",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "5275948",
+      "indice": 483,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "530",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "71335827",
+      "indice": 484,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "531",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1221722034",
+      "indice": 485,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "532",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79658237",
+      "indice": 486,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "533",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1048065883",
+      "indice": 487,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "534",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19315102",
+      "indice": 488,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "535",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "63472341",
+      "indice": 489,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "536",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1039453673",
+      "indice": 490,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "537",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "94429126",
+      "indice": 491,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "538",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1013337764",
+      "indice": 492,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "539",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "13882517",
+      "indice": 493,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "540",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42140629",
+      "indice": 494,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "541",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020455700",
+      "indice": 495,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "542",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1024572926",
+      "indice": 496,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "543",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1007107934",
+      "indice": 497,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "544",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1019094116",
+      "indice": 498,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "545",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79416361",
+      "indice": 499,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "546",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79384695",
+      "indice": 500,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "547",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1001822608",
+      "indice": 501,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "548",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1023917649",
+      "indice": 502,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "549",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "36862759",
+      "indice": 503,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "550",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "34522891",
+      "indice": 504,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "551",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1045720999",
+      "indice": 505,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "552",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79424730",
+      "indice": 506,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "553",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52046752",
+      "indice": 507,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "554",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1007170124",
+      "indice": 508,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "555",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "26236805D",
+      "indice": 509,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "556",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1023973610",
+      "indice": 510,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "557",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "6199437",
+      "indice": 511,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "558",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1090475307",
+      "indice": 512,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "559",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79504886",
+      "indice": 513,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "560",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80426414",
+      "indice": 514,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "561",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1026139374",
+      "indice": 515,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "562",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1136879906",
+      "indice": 516,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "563",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1022374073",
+      "indice": 517,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "564",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42063118",
+      "indice": 518,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "565",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1070004967",
+      "indice": 519,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "566",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1015426456",
+      "indice": 520,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "567",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "17159984",
+      "indice": 521,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "568",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1023973328",
+      "indice": 522,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "569",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1095795247",
+      "indice": 523,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "570",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "55245829",
+      "indice": 524,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "571",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80216695",
+      "indice": 525,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "572",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1090421269",
+      "indice": 526,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "573",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032444655",
+      "indice": 527,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "574",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "40372049",
+      "indice": 528,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "575",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1021670718",
+      "indice": 529,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "576",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "6789836",
+      "indice": 530,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "577",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "41904385",
+      "indice": 531,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "578",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "11188124",
+      "indice": 532,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "579",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1143358839",
+      "indice": 533,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "580",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "93239897",
+      "indice": 534,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "581",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1024520440",
+      "indice": 535,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "582",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39784511",
+      "indice": 536,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "583",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "45460346",
+      "indice": 537,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "584",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "14893908",
+      "indice": 538,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "585",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52507491",
+      "indice": 539,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "586",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032426853",
+      "indice": 540,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "587",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80181024",
+      "indice": 541,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "588",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098681565",
+      "indice": 542,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "589",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1096186037",
+      "indice": 543,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "590",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098618130",
+      "indice": 544,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "591",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1072666438",
+      "indice": 545,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "592",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "63505023",
+      "indice": 546,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "593",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1025646315",
+      "indice": 547,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "594",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37514174",
+      "indice": 548,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "595",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1053845480",
+      "indice": 549,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "596",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1034300540",
+      "indice": 550,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "597",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "15405742",
+      "indice": 551,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "598",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39535615",
+      "indice": 552,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "599",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1130607885",
+      "indice": 553,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "600",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1070624134",
+      "indice": 554,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "601",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "66967464",
+      "indice": 555,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "602",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42981879",
+      "indice": 556,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "603",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "71799903",
+      "indice": 557,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "604",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1077033839",
+      "indice": 558,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "605",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1130591206",
+      "indice": 559,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "606",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8388886",
+      "indice": 560,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "607",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "142382",
+      "indice": 561,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "608",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1043666379",
+      "indice": 562,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "609",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79363326",
+      "indice": 563,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "610",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1121822183",
+      "indice": 564,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "611",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1023913208",
+      "indice": 565,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "612",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1002426201",
+      "indice": 566,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "613",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "53140873",
+      "indice": 567,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "614",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "66857907",
+      "indice": 568,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "615",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1075258671",
+      "indice": 569,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "616",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "73203368",
+      "indice": 570,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "617",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "37727249",
+      "indice": 571,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "618",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1031122668",
+      "indice": 572,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "619",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1140835126",
+      "indice": 573,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "620",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52800248",
+      "indice": 574,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "621",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "19457862",
+      "indice": 575,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "622",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "91242606",
+      "indice": 576,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "623",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79375419",
+      "indice": 577,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "624",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "75082969",
+      "indice": 578,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "625",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1001683072",
+      "indice": 579,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "626",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "2921202",
+      "indice": 580,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "627",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80420861",
+      "indice": 581,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "628",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "16726133",
+      "indice": 582,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "629",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1096183214",
+      "indice": 583,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "630",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "45522253",
+      "indice": 584,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "631",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1039456443",
+      "indice": 585,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "632",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1005030527",
+      "indice": 586,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "633",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52795375",
+      "indice": 587,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "634",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "3563873",
+      "indice": 588,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "635",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1037592507",
+      "indice": 589,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "636",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1012365271",
+      "indice": 590,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "637",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1003397685",
+      "indice": 591,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "638",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1005183374",
+      "indice": 592,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "639",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79623905",
+      "indice": 593,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "640",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "63545310",
+      "indice": 594,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "641",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1039460314",
+      "indice": 595,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "642",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79464162",
+      "indice": 596,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "643",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1005326782",
+      "indice": 597,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "644",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1021633740",
+      "indice": 598,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "645",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018452057",
+      "indice": 599,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "646",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79592513",
+      "indice": 600,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "647",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1007292481",
+      "indice": 601,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "648",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1032357426",
+      "indice": 602,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "649",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "42098269",
+      "indice": 603,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "650",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "52249772",
+      "indice": 604,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "651",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8311517",
+      "indice": 605,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "652",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80756791",
+      "indice": 606,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "653",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1129536242",
+      "indice": 607,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "654",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1092851495",
+      "indice": 608,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "655",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1107512005",
+      "indice": 609,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "656",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1033715442",
+      "indice": 610,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "657",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "49718980",
+      "indice": 611,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "658",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018435439",
+      "indice": 612,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "659",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79899115",
+      "indice": 613,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "660",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80657071",
+      "indice": 614,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "661",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1111542377",
+      "indice": 615,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "662",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "7177415",
+      "indice": 616,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "663",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79892205",
+      "indice": 617,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "664",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "8355504",
+      "indice": 618,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "665",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39789509",
+      "indice": 619,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "666",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1099737399",
+      "indice": 620,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "667",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "80177419",
+      "indice": 621,
+      "exito": true,
+      "errores": [
+        "Error al asignar grupo"
+      ],
+      "user_id": "668",
+      "imagen_asignada": true,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1020720901",
+      "indice": 622,
+      "exito": false,
+      "errores": [
+        "Error inesperado: Unread result found"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79421028",
+      "indice": 623,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1018418018",
+      "indice": 624,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1012320839",
+      "indice": 625,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1082898870",
+      "indice": 626,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39777386",
+      "indice": 627,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1011322787",
+      "indice": 628,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "79645023",
+      "indice": 629,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "4560653",
+      "indice": 630,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098700526",
+      "indice": 631,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1021923950",
+      "indice": 632,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1098794660",
+      "indice": 633,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39023047",
+      "indice": 634,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1110364122",
+      "indice": 635,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "39436331",
+      "indice": 636,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    },
+    {
+      "documento": "1152445409",
+      "indice": 637,
+      "exito": false,
+      "errores": [
+        "Usuario no encontrado en MiID"
+      ],
+      "user_id": null,
+      "imagen_asignada": false,
+      "grupo_asignado": false,
+      "actualizado": false
+    }
+  ],
+  "configuracion": {
+    "archivo_excel": "tests\\clientes.xlsx",
+    "carpeta_imagenes": "C:\\Users\\wilfran.rivera\\Downloads\\Imagenes Facial MiID",
+    "grupo_usuario_id": 1002
+  }
+}
