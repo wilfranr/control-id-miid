@@ -30,6 +30,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Versión de la aplicación
+__version__ = "1.1.0"
+
 """Diagnóstico fino de imports para evitar 'Modo Prueba' silencioso.
 Registramos exactamente qué módulo falla al empaquetar/ejecutar.
 """
@@ -186,6 +189,12 @@ class ControlIdGUI:
                 self.status_label.configure(text="Modo Prueba", text_color="orange")
             
             print("GUI iniciada correctamente.")
+
+            # Lanzar prueba de conexiones al iniciar sin bloquear la UI
+            try:
+                self.root.after(1000, self.probar_conexiones_inicial)
+            except Exception:
+                pass
             
         except Exception as e:
             print(f"Error al inicializar GUI: {e}")
@@ -734,6 +743,135 @@ class ControlIdGUI:
         except Exception as e:
             self.log_message(f"Error al cargar imagen: {str(e)}")
             self.user_image_label.configure(text="Error al cargar imagen")
+
+    def probar_conexiones_inicial(self):
+        """Pre-chequeo silencioso: si falla algo, abrir modal con logs; si no, notificar éxito."""
+        def run_precheck():
+            try:
+                # Cargar configuración actual
+                miid_cfg = None
+                azure_cfg = None
+                control_cfg = None
+                try:
+                    from config import MIID_CONFIG as _MIID, AZURE_CONFIG as _AZR, CONTROL_ID_CONFIG as _CID
+                    miid_cfg = dict(_MIID) if isinstance(_MIID, dict) else None
+                    azure_cfg = dict(_AZR) if isinstance(_AZR, dict) else None
+                    control_cfg = dict(_CID) if isinstance(_CID, dict) else None
+                except Exception:
+                    pass
+
+                if azure_cfg is None and 'AZURE_CONFIG' in globals():
+                    try:
+                        azure_cfg = dict(AZURE_CONFIG)  # type: ignore
+                    except Exception:
+                        azure_cfg = None
+                if control_cfg is None and 'CONTROL_ID_CONFIG' in globals():
+                    try:
+                        control_cfg = dict(CONTROL_ID_CONFIG)  # type: ignore
+                    except Exception:
+                        control_cfg = None
+
+                cfg = {
+                    'miid': miid_cfg or {
+                        'host': '', 'port': 3306, 'user': '', 'password': '', 'database': ''
+                    },
+                    'azure': azure_cfg or {
+                        'servidor': '', 'base_datos': '', 'usuario': '', 'contraseña': '', 'stored_procedure': '', 'business_context': ''
+                    },
+                    'control_id': control_cfg or {
+                        'base_url': '', 'login': '', 'password': ''
+                    }
+                }
+
+                # Ejecutar pruebas rápidas
+                miid_ok = self._quick_test_miid(cfg['miid'])
+                self.log_message(f"[MiID] {'OK' if miid_ok else 'FALLÓ'}")
+                azure_ok = self._quick_test_azure(cfg['azure'])
+                self.log_message(f"[Azure] {'OK' if azure_ok else 'FALLÓ'}")
+                cid_ok = self._quick_test_controlid(cfg['control_id'])
+                self.log_message(f"[ControlId] {'OK' if cid_ok else 'FALLÓ'}")
+
+                def on_done():
+                    try:
+                        if miid_ok and azure_ok and cid_ok:
+                            # Todas OK: solo actualizar estado visual a Conectado
+                            if hasattr(self, 'status_label'):
+                                self.status_label.configure(text="Conectado", text_color="green")
+                            self.log_message("Todas las conexiones verificadas correctamente.")
+                        else:
+                            # Alguna falló: abrir modal detallado y marcar estado como problema
+                            if hasattr(self, 'status_label'):
+                                self.status_label.configure(text="Problemas de conexión", text_color="orange")
+                            modal = ModalPruebasConexiones(self.root, self, cfg)
+                            modal.ejecutar_pruebas_en_hilo()
+                    except Exception as _exc:
+                        self.log_message(f"Error mostrando resultado de conexiones: {_exc}")
+
+                self.root.after(0, on_done)
+            except Exception as exc:
+                self.log_message(f"No se pudo completar pre-chequeo de conexiones: {exc}")
+
+        threading.Thread(target=run_precheck, daemon=True).start()
+
+    def _quick_test_miid(self, cfg):
+        try:
+            import mysql.connector
+            cnx = mysql.connector.connect(
+                host=cfg.get('host'),
+                port=cfg.get('port') or 3306,
+                user=cfg.get('user'),
+                password=cfg.get('password'),
+                database=cfg.get('database'),
+                connection_timeout=5
+            )
+            try:
+                cur = cnx.cursor()
+                cur.execute("SELECT 1")
+                _ = cur.fetchone()
+                cur.close()
+                return True
+            finally:
+                cnx.close()
+        except Exception:
+            return False
+
+    def _quick_test_azure(self, cfg):
+        try:
+            if 'conectar_base_datos' in globals():
+                conexion = conectar_base_datos(
+                    cfg.get('servidor'),
+                    cfg.get('base_datos'),
+                    cfg.get('usuario'),
+                    cfg.get('contraseña')
+                )
+                try:
+                    return True if conexion else False
+                finally:
+                    try:
+                        conexion.close()
+                    except Exception:
+                        pass
+            return False
+        except Exception:
+            return False
+
+    def _quick_test_controlid(self, cfg):
+        try:
+            if 'set_control_id_config' in globals():
+                try:
+                    set_control_id_config({
+                        'base_url': cfg.get('base_url'),
+                        'login': cfg.get('login'),
+                        'password': cfg.get('password'),
+                    })
+                except Exception:
+                    pass
+            if 'obtener_sesion' in globals():
+                session = obtener_sesion()
+                return bool(session)
+            return False
+        except Exception:
+            return False
     
     def descargar_imagen_usuario(self, lpid, numero_documento):
         """Descargar imagen del usuario desde BykeeperDesarrollo."""
@@ -1312,11 +1450,33 @@ CARPETAS_CONFIG = {{
     def probar_conexiones(self):
         """Probar conexiones con la configuración actual."""
         try:
-            self.mostrar_mensaje("Probando conexiones...", "Info")
-            
-            # Aquí podrías agregar lógica para probar las conexiones
-            # Por ahora solo mostramos un mensaje
-            self.mostrar_mensaje("Pruebas de conexión completadas", "Éxito")
+            # Recopilar configuración actual desde los inputs (sin guardar todavía)
+            cfg = {
+                'miid': {
+                    'host': self.miid_host.get(),
+                    'port': int(self.miid_port.get() or 0) if str(self.miid_port.get()).strip() else 0,
+                    'user': self.miid_user.get(),
+                    'password': self.miid_password.get(),
+                    'database': self.miid_database.get(),
+                },
+                'azure': {
+                    'servidor': self.azure_servidor.get(),
+                    'base_datos': self.azure_database.get(),
+                    'usuario': self.azure_user.get(),
+                    'contraseña': self.azure_password.get(),
+                    'stored_procedure': self.azure_sp.get(),
+                    'business_context': self.azure_context.get(),
+                },
+                'control_id': {
+                    'base_url': self.control_url.get(),
+                    'login': self.control_user.get(),
+                    'password': self.control_password.get(),
+                }
+            }
+
+            # Abrir modal de pruebas con logs en tiempo real
+            modal = ModalPruebasConexiones(self.parent, self.main_app, cfg)
+            modal.ejecutar_pruebas_en_hilo()
             
         except Exception as e:
             self.mostrar_mensaje(f"Error en pruebas: {str(e)}", "Error")
@@ -1334,6 +1494,150 @@ CARPETAS_CONFIG = {{
             msgbox.showerror("Error", mensaje)
         else:
             msgbox.showinfo("Información", mensaje)
+
+class ModalPruebasConexiones:
+    """Modal para mostrar logs de prueba de conexiones: MiID, Azure y ControlId."""
+    def __init__(self, parent, main_app, config_dict):
+        self.parent = parent
+        self.main_app = main_app
+        self.config_dict = config_dict
+
+        self.window = ctk.CTkToplevel(parent)
+        self.window.title("Pruebas de Conexión")
+        self.window.geometry("700x500")
+        self.window.resizable(True, True)
+
+        # Centrar
+        self.window.update_idletasks()
+        x = (self.window.winfo_screenwidth() // 2) - (700 // 2)
+        y = (self.window.winfo_screenheight() // 2) - (500 // 2)
+        self.window.geometry(f"700x500+{x}+{y}")
+
+        # UI
+        title = ctk.CTkLabel(self.window, text="Ejecución de pruebas de conexión", font=ctk.CTkFont(size=18, weight="bold"))
+        title.pack(pady=10)
+
+        self.text = ctk.CTkTextbox(self.window, font=ctk.CTkFont(family="Consolas", size=11))
+        self.text.pack(fill="both", expand=True, padx=10, pady=10)
+
+        btn_frame = ctk.CTkFrame(self.window)
+        btn_frame.pack(fill="x", padx=10, pady=(0,10))
+
+        self.close_btn = ctk.CTkButton(btn_frame, text="Cerrar", command=self.window.destroy)
+        self.close_btn.pack(side="right")
+
+        # Modal
+        self.window.transient(parent)
+        self.window.grab_set()
+
+    def log(self, message):
+        try:
+            timestamp = datetime.now().strftime("%H:%M:%S")
+            line = f"[{timestamp}] {message}\n"
+            self.text.insert("end", line)
+            self.text.see("end")
+            if hasattr(self.main_app, 'log_message'):
+                self.main_app.log_message(message)
+            self.window.update()
+        except Exception:
+            pass
+
+    def ejecutar_pruebas_en_hilo(self):
+        threading.Thread(target=self._run_tests, daemon=True).start()
+
+    def _run_tests(self):
+        try:
+            self.log("Iniciando pruebas de conexión...")
+            self._test_miid()
+            self._test_azure()
+            self._test_controlid()
+            self.log("Pruebas de conexión completadas.")
+        except Exception as exc:
+            self.log(f"Error general en pruebas: {exc}")
+
+    def _test_miid(self):
+        cfg = self.config_dict.get('miid', {})
+        self.log("[MiID] Probando conexión MySQL...")
+        try:
+            import mysql.connector
+            cnx = mysql.connector.connect(
+                host=cfg.get('host'),
+                port=cfg.get('port') or 3306,
+                user=cfg.get('user'),
+                password=cfg.get('password'),
+                database=cfg.get('database'),
+                connection_timeout=10
+            )
+            try:
+                cur = cnx.cursor()
+                cur.execute("SELECT 1")
+                _ = cur.fetchone()
+                cur.close()
+                self.log("[MiID] Conexión OK y consulta simple exitosa.")
+            finally:
+                cnx.close()
+        except Exception as exc:
+            self.log(f"[MiID] Error: {exc}")
+
+    def _test_azure(self):
+        cfg = self.config_dict.get('azure', {})
+        self.log("[Azure] Probando conexión a SQL y ejecución de SP de prueba...")
+        try:
+            # Reutilizar helper existente si está disponible
+            if 'conectar_base_datos' in globals():
+                conexion = conectar_base_datos(
+                    cfg.get('servidor'),
+                    cfg.get('base_datos'),
+                    cfg.get('usuario'),
+                    cfg.get('contraseña')
+                )
+                try:
+                    # Ejecución mínima para validar SP si es posible
+                    if 'ejecutar_stored_procedure' in globals():
+                        try:
+                            cursor = ejecutar_stored_procedure(conexion, cfg.get('stored_procedure'), 'TEST_LPID', cfg.get('business_context'))
+                            if cursor:
+                                self.log("[Azure] Conexión OK y SP ejecutado (dummy).")
+                            else:
+                                self.log("[Azure] Conexión OK, pero no se pudo ejecutar SP.")
+                        except Exception as _:
+                            self.log("[Azure] Conexión OK. SP no validado (parámetros de prueba).")
+                    else:
+                        self.log("[Azure] Conexión OK.")
+                finally:
+                    try:
+                        conexion.close()
+                    except Exception:
+                        pass
+            else:
+                self.log("[Azure] No está disponible el helper de conexión.")
+        except Exception as exc:
+            self.log(f"[Azure] Error: {exc}")
+
+    def _test_controlid(self):
+        cfg = self.config_dict.get('control_id', {})
+        self.log("[ControlId] Probando obtener sesión...")
+        try:
+            # Aplicar config temporalmente al flujo si está disponible
+            if 'set_control_id_config' in globals():
+                try:
+                    set_control_id_config({
+                        'base_url': cfg.get('base_url'),
+                        'login': cfg.get('login'),
+                        'password': cfg.get('password'),
+                    })
+                except Exception:
+                    pass
+            if 'obtener_sesion' in globals():
+                session = obtener_sesion()
+                if session:
+                    self.log("[ControlId] Sesión obtenida correctamente.")
+                else:
+                    self.log("[ControlId] No se pudo obtener sesión.")
+            else:
+                self.log("[ControlId] Función obtener_sesion no disponible.")
+        except Exception as exc:
+            self.log(f"[ControlId] Error: {exc}")
 
 def main():
     """Función principal."""
