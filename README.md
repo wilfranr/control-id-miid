@@ -114,9 +114,39 @@ python control_id_gui_final.py
    - Guardar configuración automáticamente
 
 5. **Monitoreo**
+
    - Logs en tiempo real
    - Estado de conexiones
    - Progreso de operaciones
+
+## Construir Ejecutable (Windows)
+
+Hay dos opciones de build. Ambos scripts crean una carpeta `dist/ControlIdGUI` con el ejecutable y dependencias.
+
+- PowerShell:
+
+  ```powershell
+  # build en carpeta (recomendado para incluir config externo)
+  ./build_exe.ps1
+
+  # build onefile (ejecutable único)
+  ./build_exe.ps1 -OneFile
+  ```
+
+- CMD (.bat):
+
+  ```bat
+  :: build en carpeta
+  build_exe.bat
+
+  :: build onefile
+  build_exe.bat --onefile
+  ```
+
+Notas:
+- Si existe `config.py` en la raíz al momento del build, se incluye junto al ejecutable. Alternativamente, puede distribuirse `config.py` junto al `.exe` y será cargado por la app.
+- Recursos como `assets/images/logo.png` se incluyen automáticamente en el build.
+- Para ejecutar en cualquier PC, copie el contenido de `dist/ControlIdGUI` (o el `.exe` si usó onefile).
 
 ## Flujo del Sistema
 
