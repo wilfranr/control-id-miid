@@ -272,7 +272,7 @@ def modificar_usuario_existente(session: str, user_id: str, nombre: str, documen
 
 def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: str) -> bool:
     """
-    Asigna una imagen a un usuario en ControlId.
+    Asigna una imagen a un usuario en ControlId usando el endpoint correcto.
     
     Args:
         session: Token de sesión
@@ -285,12 +285,16 @@ def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: str) -> bool
     try:
         logger.info(f"Asignando imagen al usuario ID: {user_id}")
         
+        # Usar el endpoint correcto según la documentación
         url = f"{CONTROL_ID_CONFIG['base_url']}/user_set_image.fcgi"
+        
+        # Generar timestamp actual
+        timestamp = str(int(time.time()))
+        
         params = {
+            'session': session,
             'user_id': user_id,
-            'match': '1',
-            'timestamp': str(int(Path(ruta_imagen).stat().st_mtime)),
-            'session': session
+            'timestamp': timestamp
         }
         headers = {'Content-Type': 'application/octet-stream'}
         
@@ -298,11 +302,24 @@ def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: str) -> bool
         with open(ruta_imagen, 'rb') as image_file:
             image_data = image_file.read()
         
-        response = requests.post(url, params=params, headers=headers, data=image_data, timeout=30)
-        response.raise_for_status()
+        logger.info(f"Enviando imagen {Path(ruta_imagen).name} para usuario ID {user_id}")
+        logger.info(f"Tamaño de imagen: {len(image_data)} bytes")
+        logger.info(f"Timestamp: {timestamp}")
         
-        logger.info("Imagen asignada exitosamente al usuario")
-        return True
+        response = requests.post(url, params=params, headers=headers, data=image_data, timeout=30)
+        
+        # Log de la respuesta para debugging
+        logger.info(f"Respuesta de asignación de imagen - Status: {response.status_code}")
+        
+        # El endpoint no devuelve cuerpo de respuesta según la documentación
+        if response.status_code == 200:
+            logger.info("Imagen asignada exitosamente (sin respuesta del servidor)")
+            return True
+        else:
+            logger.error(f"Error en asignación de imagen - Status: {response.status_code}")
+            if response.text:
+                logger.error(f"Respuesta del servidor: {response.text}")
+            return False
         
     except requests.RequestException as e:
         logger.error(f"Error al asignar imagen: {e}")

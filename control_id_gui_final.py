@@ -928,22 +928,27 @@ class ControlIdGUI:
             return None
     
     def asignar_imagen_usuario(self, user_id, ruta_imagen):
-        """Asignar imagen a un usuario en ControlId."""
+        """Asignar imagen a un usuario en ControlId usando el endpoint correcto."""
         if not MODULES_LOADED or not self.session:
             return False
             
         try:
             import requests
+            import time
             from config import CONTROL_ID_CONFIG
             
             self.log_message(f"Asignando imagen al usuario ID: {user_id}")
             
+            # Usar el endpoint correcto según la documentación
             url = f"{CONTROL_ID_CONFIG['base_url']}/user_set_image.fcgi"
+            
+            # Generar timestamp actual
+            timestamp = str(int(time.time()))
+            
             params = {
+                'session': self.session,
                 'user_id': user_id,
-                'match': '1',
-                'timestamp': str(int(Path(ruta_imagen).stat().st_mtime)),
-                'session': self.session
+                'timestamp': timestamp
             }
             headers = {'Content-Type': 'application/octet-stream'}
             
@@ -951,11 +956,24 @@ class ControlIdGUI:
             with open(ruta_imagen, 'rb') as image_file:
                 image_data = image_file.read()
             
-            response = requests.post(url, params=params, headers=headers, data=image_data, timeout=30)
-            response.raise_for_status()
+            self.log_message(f"Enviando imagen {Path(ruta_imagen).name} para usuario ID {user_id}")
+            self.log_message(f"Tamaño de imagen: {len(image_data)} bytes")
+            self.log_message(f"Timestamp: {timestamp}")
             
-            self.log_message("Imagen asignada exitosamente al usuario")
-            return True
+            response = requests.post(url, params=params, headers=headers, data=image_data, timeout=30)
+            
+            # Log de la respuesta para debugging
+            self.log_message(f"Respuesta de asignación de imagen - Status: {response.status_code}")
+            
+            # El endpoint no devuelve cuerpo de respuesta según la documentación
+            if response.status_code == 200:
+                self.log_message("Imagen asignada exitosamente (sin respuesta del servidor)")
+                return True
+            else:
+                self.log_message(f"Error en asignación de imagen - Status: {response.status_code}")
+                if response.text:
+                    self.log_message(f"Respuesta del servidor: {response.text}")
+                return False
             
         except Exception as e:
             self.log_message(f"Error al asignar imagen: {str(e)}")

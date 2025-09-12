@@ -343,14 +343,18 @@ def modificar_usuario_controlid(session: str, user_id: str, nombre: str, documen
         return False
 
 def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: Path) -> bool:
-    """Asignar imagen a usuario en ControlId."""
+    """Asignar imagen a usuario en ControlId usando el endpoint correcto."""
     try:
+        # Usar el endpoint correcto según la documentación
         url = f"{CONTROL_ID_CONFIG['base_url']}/user_set_image.fcgi"
+        
+        # Generar timestamp actual
+        timestamp = str(int(time.time()))
+        
         params = {
+            'session': session,
             'user_id': user_id,
-            'match': '1',
-            'timestamp': str(int(ruta_imagen.stat().st_mtime)),
-            'session': session
+            'timestamp': timestamp
         }
         headers = {'Content-Type': 'application/octet-stream'}
         
@@ -358,16 +362,25 @@ def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: Path) -> boo
         with open(ruta_imagen, 'rb') as image_file:
             image_data = image_file.read()
         
+        logger.info(f"Enviando imagen {ruta_imagen.name} para usuario ID {user_id}")
+        logger.info(f"Tamaño de imagen: {len(image_data)} bytes")
+        logger.info(f"Timestamp: {timestamp}")
+        
         response = requests.post(url, params=params, headers=headers, data=image_data, timeout=PROCESO_CONFIG['timeout_requests'])
         
         # Log de la respuesta para debugging
         logger.info(f"Respuesta de asignación de imagen - Status: {response.status_code}")
         logger.info(f"Respuesta de asignación de imagen - Headers: {dict(response.headers)}")
-        logger.info(f"Respuesta de asignación de imagen - Content: {response.text[:500]}...")
         
-        response.raise_for_status()
-        
-        return True
+        # El endpoint no devuelve cuerpo de respuesta según la documentación
+        if response.status_code == 200:
+            logger.info("Imagen asignada exitosamente (sin respuesta del servidor)")
+            return True
+        else:
+            logger.error(f"Error en asignación de imagen - Status: {response.status_code}")
+            if response.text:
+                logger.error(f"Respuesta del servidor: {response.text}")
+            return False
         
     except Exception as e:
         logger.error(f"Error al asignar imagen: {e}")
