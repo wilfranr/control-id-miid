@@ -137,14 +137,14 @@ def crear_usuario_nuevo(session: str, nombre: str, documento: str) -> Optional[s
         logger.error(f"Error al crear usuario: {e}")
         return None
 
-def crear_grupo_para_usuario(session: str, user_id: str, group_id: int = 1002) -> bool:
+def crear_grupo_para_usuario(session: str, user_id: str, group_id: int = 2) -> bool:
     """
     Crea la relación user_groups para asignar un grupo fijo al usuario.
 
     Args:
         session: Token de sesión
         user_id: ID del usuario
-        group_id: ID del grupo (por defecto 1001)
+        group_id: ID del grupo (por defecto 2)
 
     Returns:
         True si se creó correctamente o ya existía; False si falla.
@@ -362,8 +362,9 @@ def procesar_usuario_inteligente(session: str, nombre: str, documento: str) -> O
             user_id = usuario_existente.get('id')
             if modificar_usuario_existente(session, str(user_id), nombre, documento):
                 logger.info(f"Usuario modificado exitosamente. ID: {user_id}")
-                # Asegurar asignación de grupo fijo 1002
-                if not crear_grupo_para_usuario(session, str(user_id), 1002):
+                # Asegurar asignación de grupo por defecto
+                _gid = int((CONTROL_ID_CONFIG or {}).get('default_group_id', 2))
+                if not crear_grupo_para_usuario(session, str(user_id), _gid):
                     logger.warning("No se pudo asignar el grupo al usuario modificado")
                 return str(user_id)
             else:
@@ -375,8 +376,9 @@ def procesar_usuario_inteligente(session: str, nombre: str, documento: str) -> O
             user_id = crear_usuario_nuevo(session, nombre, documento)
             if user_id:
                 logger.info(f"Usuario creado exitosamente. ID: {user_id}")
-                # Asignar grupo fijo 1002 al usuario recién creado
-                if not crear_grupo_para_usuario(session, user_id, 1002):
+                # Asignar grupo por defecto al usuario recién creado
+                _gid = int((CONTROL_ID_CONFIG or {}).get('default_group_id', 2))
+                if not crear_grupo_para_usuario(session, user_id, _gid):
                     logger.warning("No se pudo asignar el grupo al nuevo usuario")
                 return user_id
             else:

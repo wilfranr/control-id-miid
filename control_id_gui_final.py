@@ -106,6 +106,9 @@ if Safe_config:
                 AZURE_CONFIG = getattr(mod, 'AZURE_CONFIG', AZURE_CONFIG)
                 CARPETAS_CONFIG = getattr(mod, 'CARPETAS_CONFIG', CARPETAS_CONFIG)
                 CONTROL_ID_CONFIG = getattr(mod, 'CONTROL_ID_CONFIG', CONTROL_ID_CONFIG)
+                # Asegurar clave default_group_id presente
+                if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
+                    CONTROL_ID_CONFIG['default_group_id'] = 2
     except Exception as _e:
         IMPORT_ERRORS.append(f"No se pudo cargar config externo: {_e}")
 else:
@@ -143,6 +146,8 @@ else:
                 AZURE_CONFIG = Safe_config_retry.AZURE_CONFIG
                 CARPETAS_CONFIG = Safe_config_retry.CARPETAS_CONFIG
                 CONTROL_ID_CONFIG = Safe_config_retry.CONTROL_ID_CONFIG
+                if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
+                    CONTROL_ID_CONFIG['default_group_id'] = 2
     except Exception as _exc:
         IMPORT_ERRORS.append(f"Fallback de _MEIPASS falló: {_exc}")
 
@@ -665,13 +670,14 @@ class ControlIdGUI:
                 if user_id:
                     self.log_message(f"Usuario procesado exitosamente. ID: {user_id}")
                     
-                    # Paso 3: Crear relación user_groups (grupo 1002)
-                    self.log_message("Asignando grupo 1002 al usuario...")
+                    # Paso 3: Crear relación user_groups (grupo configurable)
+                    _gid = int((CONTROL_ID_CONFIG or {}).get('default_group_id', 2))
+                    self.log_message(f"Asignando grupo {_gid} al usuario...")
                     if 'set_control_id_config' in globals():
                         # Asegurar que el flujo use la configuración actual
                         set_control_id_config(CONTROL_ID_CONFIG)
                     if 'crear_grupo_para_usuario' in globals():
-                        if crear_grupo_para_usuario(self.session, user_id, 1002):
+                        if crear_grupo_para_usuario(self.session, user_id, _gid):
                             self.log_message("Grupo asignado exitosamente")
                         else:
                             self.log_message("Advertencia: no se pudo asignar grupo al usuario")
@@ -863,6 +869,7 @@ class ControlIdGUI:
                         'base_url': cfg.get('base_url'),
                         'login': cfg.get('login'),
                         'password': cfg.get('password'),
+                        'default_group_id': cfg.get('default_group_id', 2),
                     })
                 except Exception:
                     pass
@@ -1037,12 +1044,13 @@ class ControlIdGUI:
                             self.log_message(f"Usuario ya existe: {usuario['nombre']} - {usuario['documento']}")
                             self.log_message("Verificando si necesita actualización de imagen y grupo...")
                             
-                            # Asegurar que el usuario tenga el grupo 1002
+                            # Asegurar que el usuario tenga el grupo configurable
                             if 'set_control_id_config' in globals():
                                 set_control_id_config(CONTROL_ID_CONFIG)
                             if 'crear_grupo_para_usuario' in globals():
-                                if crear_grupo_para_usuario(self.session, str(usuario_existente['id']), 1002):
-                                    self.log_message("Grupo 1002 verificado/actualizado")
+                                _gid = int((CONTROL_ID_CONFIG or {}).get('default_group_id', 2))
+                                if crear_grupo_para_usuario(self.session, str(usuario_existente['id']), _gid):
+                                    self.log_message(f"Grupo {_gid} verificado/actualizado")
                                 else:
                                     self.log_message("Advertencia: no se pudo verificar grupo del usuario")
                             
@@ -1123,9 +1131,14 @@ class ConfiguracionWindow:
         """Cargar configuración actual desde config.py."""
         try:
             from config import MIID_CONFIG, AZURE_CONFIG, CONTROL_ID_CONFIG, CARPETAS_CONFIG
+            try:
+                from config import MIID_EC_ID as _MIID_EC_ID
+                _ec_id_val = int(_MIID_EC_ID)
+            except Exception:
+                _ec_id_val = 11000
             
             self.config_data = {
-                'miid': MIID_CONFIG.copy(),
+                'miid': {**MIID_CONFIG.copy(), 'ec_id': _ec_id_val},
                 'azure': AZURE_CONFIG.copy(),
                 'control_id': CONTROL_ID_CONFIG.copy(),
                 'carpetas': CARPETAS_CONFIG.copy()
@@ -1139,7 +1152,8 @@ class ConfiguracionWindow:
                     'port': 3306,
                     'user': 'usuario',
                     'password': 'contraseña',
-                    'database': 'miidcore'
+                    'database': 'miidcore',
+                    'ec_id': 11000
                 },
                 'azure': {
                     'servidor': 'servidor.database.windows.net',
@@ -1152,7 +1166,8 @@ class ConfiguracionWindow:
                 'control_id': {
                     'base_url': '',
                     'login': '',
-                    'password': ''
+                    'password': '',
+                    'default_group_id': 2
                 },
                 'carpetas': {
                     'carpeta_local_temp': 'C:\\temp\\Imagenes_Pro',
@@ -1226,6 +1241,15 @@ class ConfiguracionWindow:
         self.miid_database = ctk.CTkEntry(tab, width=400, height=30)
         self.miid_database.pack(padx=20, pady=(0, 5))
         self.miid_database.insert(0, self.config_data['miid']['database'])
+
+        # EC_ID
+        ctk.CTkLabel(tab, text="EC_ID:", font=ctk.CTkFont(size=12, weight="bold")).pack(anchor="w", padx=20, pady=(10, 0))
+        self.miid_ec_id = ctk.CTkEntry(tab, width=200, height=30)
+        self.miid_ec_id.pack(padx=20, pady=(0, 5))
+        try:
+            self.miid_ec_id.insert(0, str(self.config_data['miid'].get('ec_id', 11000)))
+        except Exception:
+            self.miid_ec_id.insert(0, "11000")
     
     def crear_pestana_azure(self):
         """Crear pestaña de configuración Azure."""
@@ -1296,6 +1320,16 @@ class ConfiguracionWindow:
         self.control_password = ctk.CTkEntry(tab, width=400, height=30, show="*")
         self.control_password.pack(padx=20, pady=(0, 5))
         self.control_password.insert(0, self.config_data['control_id']['password'])
+        
+        # Grupo de acceso por defecto
+        ctk.CTkLabel(tab, text="Grupo de acceso (ID):", font=ctk.CTkFont(size=12, weight="bold")).pack(anchor="w", padx=20, pady=(10, 0))
+        self.control_group_id = ctk.CTkEntry(tab, width=200, height=30)
+        self.control_group_id.pack(padx=20, pady=(0, 5))
+        try:
+            _gid = self.config_data['control_id'].get('default_group_id', 2)
+            self.control_group_id.insert(0, str(_gid))
+        except Exception:
+            self.control_group_id.insert(0, "2")
     
     def crear_pestana_carpetas(self):
         """Crear pestaña de configuración de carpetas."""
@@ -1365,7 +1399,10 @@ class ConfiguracionWindow:
                     'port': int(self.miid_port.get()),
                     'user': self.miid_user.get(),
                     'password': self.miid_password.get(),
-                    'database': self.miid_database.get()
+                    'database': self.miid_database.get(),
+                    'ec_id': (lambda parsed: parsed if parsed is not None and parsed >= 0 else 11000)(
+                        (lambda s: int(s.strip()) if isinstance(s, str) and s.strip() != '' and s.strip().isdigit() else None)(self.miid_ec_id.get())
+                    )
                 },
                 'azure': {
                     'servidor': self.azure_servidor.get(),
@@ -1378,7 +1415,10 @@ class ConfiguracionWindow:
                 'control_id': {
                     'base_url': self.control_url.get(),
                     'login': self.control_user.get(),
-                    'password': self.control_password.get()
+                    'password': self.control_password.get(),
+                    'default_group_id': (lambda parsed: parsed if parsed is not None and parsed >= 0 else 2)(
+                        (lambda s: int(s.strip()) if isinstance(s, str) and s.strip() != '' and s.strip().isdigit() else None)(self.control_group_id.get())
+                    )
                 },
                 'carpetas': {
                     'carpeta_local_temp': self.carpeta_temp.get(),
@@ -1403,6 +1443,9 @@ MIID_CONFIG = {{
     "database": "{nueva_config['miid']['database']}"
 }}
 
+# Filtro de EC_ID para MiID
+MIID_EC_ID = {nueva_config['miid']['ec_id']}
+
 # Configuración Azure SQL (BykeeperDesarrollo)
 AZURE_CONFIG = {{
     "servidor": "{nueva_config['azure']['servidor']}",
@@ -1417,7 +1460,8 @@ AZURE_CONFIG = {{
 CONTROL_ID_CONFIG = {{
     "base_url": "{nueva_config['control_id']['base_url']}",
     "login": "{nueva_config['control_id']['login']}",
-    "password": "{nueva_config['control_id']['password']}"
+    "password": "{nueva_config['control_id']['password']}",
+    "default_group_id": {nueva_config['control_id']['default_group_id']}
 }}
 
 # Configuración de carpetas
@@ -1441,6 +1485,8 @@ CARPETAS_CONFIG = {{
                 AZURE_CONFIG = _cfg.AZURE_CONFIG
                 CARPETAS_CONFIG = _cfg.CARPETAS_CONFIG
                 CONTROL_ID_CONFIG = _cfg.CONTROL_ID_CONFIG
+                if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
+                    CONTROL_ID_CONFIG['default_group_id'] = 2
                 # Actualizar configuración usada por el flujo (peticiones HTTP)
                 if 'set_control_id_config' in globals():
                     set_control_id_config(_cfg.CONTROL_ID_CONFIG)
@@ -1489,6 +1535,9 @@ CARPETAS_CONFIG = {{
                     'base_url': self.control_url.get(),
                     'login': self.control_user.get(),
                     'password': self.control_password.get(),
+                    'default_group_id': (lambda parsed: parsed if parsed is not None and parsed >= 0 else 2)(
+                        (lambda s: int(s.strip()) if isinstance(s, str) and s.strip() != '' and s.strip().isdigit() else None)(self.control_group_id.get())
+                    ),
                 }
             }
 
@@ -1643,6 +1692,7 @@ class ModalPruebasConexiones:
                         'base_url': cfg.get('base_url'),
                         'login': cfg.get('login'),
                         'password': cfg.get('password'),
+                        'default_group_id': cfg.get('default_group_id', 2),
                     })
                 except Exception:
                     pass
