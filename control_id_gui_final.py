@@ -190,6 +190,8 @@ class ControlIdGUI:
             self.root = ctk.CTk()
             self.root.title("ControlId - Gestión de Usuarios")
             self.root.geometry("1000x700")
+            self.root.minsize(800, 550)
+            self.root.resizable(True, True)
             
             # Centrar la ventana en la pantalla
             self.root.update_idletasks()
@@ -244,9 +246,13 @@ class ControlIdGUI:
         )
         self.title_label.pack(pady=15)
         
-        # Frame principal con dos columnas
-        self.main_container = ctk.CTkFrame(self.root)
-        self.main_container.pack(fill="both", expand=True, padx=20, pady=10)
+        # Contenedor scrollable para manejar pantallas pequeñas
+        self.scroll_container = ctk.CTkScrollableFrame(self.root)
+        self.scroll_container.pack(fill="both", expand=True, padx=20, pady=10)
+        
+        # Frame principal con dos columnas dentro del scroll
+        self.main_container = ctk.CTkFrame(self.scroll_container)
+        self.main_container.pack(fill="both", expand=True)
         
         # Columna izquierda - Opciones
         self.left_column = ctk.CTkFrame(self.main_container)
