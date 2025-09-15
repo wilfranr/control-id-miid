@@ -40,6 +40,7 @@ Registramos exactamente qué módulo falla al empaquetar/ejecutar.
 # Importar módulos del proyecto con manejo de errores y diagnóstico
 IMPORT_ERRORS = []
 MODULES_LOADED = True
+CURRENT_CONFIG_PATH = None
 
 def _safe_import(label, import_callable):
     global MODULES_LOADED
@@ -94,21 +95,26 @@ if Safe_config:
     CARPETAS_CONFIG = Safe_config.CARPETAS_CONFIG
     CONTROL_ID_CONFIG = Safe_config.CONTROL_ID_CONFIG
     
-    # Intentar sobrescribir con un config externo (al lado del exe o cwd)
+    # Intentar sobrescribir con un config externo (priorizar junto al .exe, luego CWD)
     try:
         from importlib.util import spec_from_file_location, module_from_spec
-        cfg_path = Path.cwd() / "config.py"
-        if cfg_path.exists():
-            spec = spec_from_file_location("config_external", str(cfg_path))
-            if spec and spec.loader:
-                mod = module_from_spec(spec)
-                spec.loader.exec_module(mod)
-                AZURE_CONFIG = getattr(mod, 'AZURE_CONFIG', AZURE_CONFIG)
-                CARPETAS_CONFIG = getattr(mod, 'CARPETAS_CONFIG', CARPETAS_CONFIG)
-                CONTROL_ID_CONFIG = getattr(mod, 'CONTROL_ID_CONFIG', CONTROL_ID_CONFIG)
-                # Asegurar clave default_group_id presente
-                if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
-                    CONTROL_ID_CONFIG['default_group_id'] = 2
+        exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
+        exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+        candidate_paths = [exe_dir / "config.py", Path.cwd() / "config.py"]
+        for cfg_path in candidate_paths:
+            if cfg_path.exists():
+                spec = spec_from_file_location("config_external", str(cfg_path))
+                if spec and spec.loader:
+                    mod = module_from_spec(spec)
+                    spec.loader.exec_module(mod)
+                    CURRENT_CONFIG_PATH = str(cfg_path)
+                    AZURE_CONFIG = getattr(mod, 'AZURE_CONFIG', AZURE_CONFIG)
+                    CARPETAS_CONFIG = getattr(mod, 'CARPETAS_CONFIG', CARPETAS_CONFIG)
+                    CONTROL_ID_CONFIG = getattr(mod, 'CONTROL_ID_CONFIG', CONTROL_ID_CONFIG)
+                    # Asegurar clave default_group_id presente
+                    if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
+                        CONTROL_ID_CONFIG['default_group_id'] = 2
+                    break
     except Exception as _e:
         IMPORT_ERRORS.append(f"No se pudo cargar config externo: {_e}")
 else:
@@ -148,6 +154,26 @@ else:
                 CONTROL_ID_CONFIG = Safe_config_retry.CONTROL_ID_CONFIG
                 if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
                     CONTROL_ID_CONFIG['default_group_id'] = 2
+                # Intentar sobrescribir con config externo junto al .exe o CWD
+                try:
+                    from importlib.util import spec_from_file_location, module_from_spec
+                    exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
+                    exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+                    candidate_paths = [exe_dir / "config.py", Path.cwd() / "config.py"]
+                    for cfg_path in candidate_paths:
+                        if cfg_path.exists():
+                            spec = spec_from_file_location("config_external_retry", str(cfg_path))
+                            if spec and spec.loader:
+                                mod = module_from_spec(spec)
+                                spec.loader.exec_module(mod)
+                                AZURE_CONFIG = getattr(mod, 'AZURE_CONFIG', AZURE_CONFIG)
+                                CARPETAS_CONFIG = getattr(mod, 'CARPETAS_CONFIG', CARPETAS_CONFIG)
+                                CONTROL_ID_CONFIG = getattr(mod, 'CONTROL_ID_CONFIG', CONTROL_ID_CONFIG)
+                                if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
+                                    CONTROL_ID_CONFIG['default_group_id'] = 2
+                                break
+                except Exception as __e:
+                    IMPORT_ERRORS.append(f"No se pudo cargar config externo tras fallback: {__e}")
     except Exception as _exc:
         IMPORT_ERRORS.append(f"Fallback de _MEIPASS falló: {_exc}")
 
@@ -1130,13 +1156,45 @@ class ConfiguracionWindow:
     def cargar_configuracion(self):
         """Cargar configuración actual desde config.py."""
         try:
-            from config import MIID_CONFIG, AZURE_CONFIG, CONTROL_ID_CONFIG, CARPETAS_CONFIG
+            # 1) Intentar cargar desde CURRENT_CONFIG_PATH si está definido; luego junto al .exe; luego CWD; por último import normal
+            from importlib.util import spec_from_file_location, module_from_spec
+            cfg_mod = None
+            global CURRENT_CONFIG_PATH
+            candidate_paths = []
+            if CURRENT_CONFIG_PATH:
+                candidate_paths.append(Path(CURRENT_CONFIG_PATH))
             try:
-                from config import MIID_EC_ID as _MIID_EC_ID
-                _ec_id_val = int(_MIID_EC_ID)
+                exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
+                exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+                candidate_paths.extend([exe_dir / 'config.py', Path.cwd() / 'config.py'])
+            except Exception:
+                candidate_paths.append(Path.cwd() / 'config.py')
+
+            for cfg_path in candidate_paths:
+                try:
+                    if cfg_path and cfg_path.exists():
+                        spec = spec_from_file_location('config_external_window', str(cfg_path))
+                        if spec and spec.loader:
+                            mod = module_from_spec(spec)
+                            spec.loader.exec_module(mod)
+                            cfg_mod = mod
+                            break
+                except Exception:
+                    continue
+
+            if cfg_mod is None:
+                import importlib
+                cfg_mod = importlib.import_module('config')
+
+            MIID_CONFIG = getattr(cfg_mod, 'MIID_CONFIG', {})
+            AZURE_CONFIG = getattr(cfg_mod, 'AZURE_CONFIG', {})
+            CONTROL_ID_CONFIG = getattr(cfg_mod, 'CONTROL_ID_CONFIG', {})
+            CARPETAS_CONFIG = getattr(cfg_mod, 'CARPETAS_CONFIG', {})
+            try:
+                _ec_id_val = int(getattr(cfg_mod, 'MIID_EC_ID', 11000))
             except Exception:
                 _ec_id_val = 11000
-            
+
             self.config_data = {
                 'miid': {**MIID_CONFIG.copy(), 'ec_id': _ec_id_val},
                 'azure': AZURE_CONFIG.copy(),
@@ -1471,30 +1529,52 @@ CARPETAS_CONFIG = {{
 }}
 '''
             
-            # Escribir archivo
-            with open('config.py', 'w', encoding='utf-8') as f:
-                f.write(config_content)
-            
-            # Recargar dinámicamente el módulo de configuración y propagar cambios
+            # Determinar ruta de guardado: junto al .exe si está congelado; si no, CWD
             try:
-                import importlib
-                import config as _cfg
-                _cfg = importlib.reload(_cfg)
-                # Actualizar variables globales utilizadas en la app
-                global AZURE_CONFIG, CARPETAS_CONFIG, CONTROL_ID_CONFIG
-                AZURE_CONFIG = _cfg.AZURE_CONFIG
-                CARPETAS_CONFIG = _cfg.CARPETAS_CONFIG
-                CONTROL_ID_CONFIG = _cfg.CONTROL_ID_CONFIG
-                if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
-                    CONTROL_ID_CONFIG['default_group_id'] = 2
-                # Actualizar configuración usada por el flujo (peticiones HTTP)
-                if 'set_control_id_config' in globals():
-                    set_control_id_config(_cfg.CONTROL_ID_CONFIG)
-                # Invalidar sesión actual para forzar re-login con nueva IP/credenciales
-                if hasattr(self, 'main_app') and hasattr(self.main_app, 'session'):
-                    self.main_app.session = None
-                    if hasattr(self.main_app, 'status_label'):
-                        self.main_app.status_label.configure(text="Desconectado", text_color="red")
+                exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
+                exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+            except Exception:
+                exe_dir = Path.cwd()
+
+            target_cfg_path = exe_dir / 'config.py'
+
+            # Escribir archivo de configuración en la ruta destino
+            try:
+                with open(target_cfg_path, 'w', encoding='utf-8') as f:
+                    f.write(config_content)
+            except Exception as _e:
+                # Si falla escribir junto al exe, intentar en CWD como fallback
+                try:
+                    with open('config.py', 'w', encoding='utf-8') as f:
+                        f.write(config_content)
+                    target_cfg_path = Path.cwd() / 'config.py'
+                except Exception:
+                    raise _e
+
+            # Recargar dinámicamente el módulo de configuración y propagar cambios desde target_cfg_path
+            try:
+                from importlib.util import spec_from_file_location, module_from_spec
+                spec = spec_from_file_location('config_external_runtime', str(target_cfg_path))
+                if spec and spec.loader:
+                    mod = module_from_spec(spec)
+                    spec.loader.exec_module(mod)
+                    global CURRENT_CONFIG_PATH
+                    CURRENT_CONFIG_PATH = str(target_cfg_path)
+                    # Actualizar variables globales utilizadas en la app
+                    global AZURE_CONFIG, CARPETAS_CONFIG, CONTROL_ID_CONFIG
+                    AZURE_CONFIG = getattr(mod, 'AZURE_CONFIG', AZURE_CONFIG)
+                    CARPETAS_CONFIG = getattr(mod, 'CARPETAS_CONFIG', CARPETAS_CONFIG)
+                    CONTROL_ID_CONFIG = getattr(mod, 'CONTROL_ID_CONFIG', CONTROL_ID_CONFIG)
+                    if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
+                        CONTROL_ID_CONFIG['default_group_id'] = 2
+                    # Actualizar configuración usada por el flujo (peticiones HTTP)
+                    if 'set_control_id_config' in globals():
+                        set_control_id_config(CONTROL_ID_CONFIG)
+                    # Invalidar sesión actual para forzar re-login con nueva IP/credenciales
+                    if hasattr(self, 'main_app') and hasattr(self.main_app, 'session'):
+                        self.main_app.session = None
+                        if hasattr(self.main_app, 'status_label'):
+                            self.main_app.status_label.configure(text="Desconectado", text_color="red")
             except Exception as _e:
                 self.mostrar_mensaje(f"Advertencia: no se pudo recargar configuración en caliente: {_e}", "Error")
 

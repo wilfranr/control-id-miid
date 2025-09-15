@@ -30,7 +30,19 @@ if ($OneFile) {
   $addDataArgs = @()
   foreach ($d in $datas) { $addDataArgs += @('--add-data', $d) }
 
-  pyinstaller --clean --noconfirm --onefile --windowed --name ControlIdGUI @addDataArgs control_id_gui_final.py
+  # Hidden imports para incluir módulos locales usados dinámicamente
+  $hidden = @(
+    'GetUserMiID',
+    'GetUserByDocument',
+    'flujo_usuario_inteligente',
+    'download_image_to_sql_temp',
+    'config',
+    'pyodbc'
+  )
+  $hiddenArgs = @()
+  foreach ($h in $hidden) { $hiddenArgs += @('--hidden-import', $h) }
+
+  pyinstaller --clean --noconfirm --onefile --windowed --name ControlIdGUI @addDataArgs @hiddenArgs control_id_gui_final.py
 } else {
   pyinstaller --clean --noconfirm control_id_gui_final.spec
 }
