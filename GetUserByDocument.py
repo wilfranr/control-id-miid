@@ -10,6 +10,13 @@ import json
 import os
 from pathlib import Path
 from config import AZURE_CONFIG, MIID_CONFIG
+try:
+    # Intentar leer MIID_EC_ID desde config.py si existe
+    from config import MIID_EC_ID as _MIID_EC_ID
+    MIID_EC_ID = int(_MIID_EC_ID)
+except Exception:
+    # Fallback a variable de entorno o valor por defecto
+    MIID_EC_ID = int(os.environ.get("MIID_EC_ID", "11000"))
 
 # Configuración de logging
 logging.basicConfig(
@@ -64,13 +71,13 @@ def buscar_usuario_por_documento(numero_documento: str):
             lpe.LP_STATUS_PROCESS
         FROM log_process_enroll lpe
         INNER JOIN person p ON lpe.PER_ID = p.PER_ID
-        WHERE p.PER_DOCUMENT_NUMBER = %s AND lpe.EC_ID = 11000
+        WHERE p.PER_DOCUMENT_NUMBER = %s AND lpe.EC_ID = %s
         ORDER BY lpe.LP_CREATION_DATE DESC
         LIMIT 1
         """
 
-        logger.info(f"Buscando usuario con documento: {numero_documento}")
-        cursor.execute(query, (numero_documento,))
+        logger.info(f"Buscando usuario con documento: {numero_documento} (EC_ID={MIID_EC_ID})")
+        cursor.execute(query, (numero_documento, MIID_EC_ID))
         usuario = cursor.fetchone()
 
         if usuario:

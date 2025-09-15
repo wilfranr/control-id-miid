@@ -9,6 +9,13 @@ import os
 from pathlib import Path
 from config import AZURE_CONFIG, MIID_CONFIG
 try:
+    # Intentar leer MIID_EC_ID desde config.py si existe
+    from config import MIID_EC_ID as _MIID_EC_ID
+    MIID_EC_ID = int(_MIID_EC_ID)
+except Exception:
+    # Fallback a variable de entorno o valor por defecto
+    MIID_EC_ID = int(os.environ.get("MIID_EC_ID", "11000"))
+try:
     # Intentar cargar config externo junto al exe/CWD en modo empaquetado
     from importlib.util import spec_from_file_location, module_from_spec
     from pathlib import Path as _Path
@@ -19,6 +26,11 @@ try:
             _mod = module_from_spec(_spec)
             _spec.loader.exec_module(_mod)
             MIID_CONFIG = getattr(_mod, 'MIID_CONFIG', MIID_CONFIG)
+            # Permitir sobreescribir MIID_EC_ID desde un config externo junto al exe
+            try:
+                MIID_EC_ID = int(getattr(_mod, 'MIID_EC_ID', MIID_EC_ID))
+            except Exception:
+                pass
 except Exception:
     pass
 
@@ -67,13 +79,13 @@ def obtener_ultimo_usuario_midd():
             lpe.LP_CREATION_DATE
         FROM log_process_enroll lpe
         INNER JOIN person p ON lpe.PER_ID = p.PER_ID
-        WHERE lpe.LP_STATUS_PROCESS = 1 AND lpe.EC_ID = 11000
+        WHERE lpe.LP_STATUS_PROCESS = 1 AND lpe.EC_ID = %s
         ORDER BY lpe.LP_CREATION_DATE DESC
         LIMIT 1
         """
 
-        logger.info("Ejecutando query para obtener el último usuario...")
-        cursor.execute(query)
+        logger.info(f"Ejecutando query para obtener el último usuario (EC_ID={MIID_EC_ID})...")
+        cursor.execute(query, (MIID_EC_ID,))
         usuario = cursor.fetchone()
 
         if usuario:
