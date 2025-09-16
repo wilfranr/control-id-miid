@@ -596,57 +596,7 @@ class ControlIdGUI:
         )
         self.user_info_label.pack(pady=15)
         
-        # Frame para la imagen del usuario
-        self.image_frame = ctk.CTkFrame(self.user_info_frame)
-        self.image_frame.pack(pady=10)
-        
-        self.user_image_label = ctk.CTkLabel(
-            self.image_frame,
-            text="Imagen",
-            font=ctk.CTkFont(size=48),
-            width=200,
-            height=200
-        )
-        self.user_image_label.pack(pady=20)
-        
-        # Frame para información del usuario
-        self.user_details_frame = ctk.CTkFrame(self.user_info_frame)
-        self.user_details_frame.pack(fill="x", padx=10, pady=10)
-        
-        # Labels para mostrar información del usuario
-        self.user_name_label = ctk.CTkLabel(
-            self.user_details_frame,
-            text="Nombre: -",
-            font=ctk.CTkFont(size=14),
-            anchor="w"
-        )
-        self.user_name_label.pack(fill="x", padx=10, pady=5)
-        
-        self.user_doc_label = ctk.CTkLabel(
-            self.user_details_frame,
-            text="Documento: -",
-            font=ctk.CTkFont(size=14),
-            anchor="w"
-        )
-        self.user_doc_label.pack(fill="x", padx=10, pady=5)
-        
-        self.user_lpid_label = ctk.CTkLabel(
-            self.user_details_frame,
-            text="LPID: -",
-            font=ctk.CTkFont(size=14),
-            anchor="w"
-        )
-        self.user_lpid_label.pack(fill="x", padx=10, pady=5)
-        
-        self.user_date_label = ctk.CTkLabel(
-            self.user_details_frame,
-            text="Fecha: -",
-            font=ctk.CTkFont(size=14),
-            anchor="w"
-        )
-        self.user_date_label.pack(fill="x", padx=10, pady=5)
-        
-        # Mensaje inicial
+        # Mensaje inicial (placeholder)
         self.placeholder_label = ctk.CTkLabel(
             self.user_info_frame,
             text="Busque un usuario para ver su información aquí.",
@@ -655,14 +605,67 @@ class ControlIdGUI:
         )
         self.placeholder_label.pack(pady=20)
         
-        # Crear sección de logs dentro del panel de usuario
-        self.create_log_section_in_user_panel()
+        # Frame principal para imagen e información (inicialmente oculto)
+        self.user_content_frame = ctk.CTkFrame(self.user_info_frame)
+        # No hacer pack() inicialmente, se mostrará cuando se actualice la info
+        
+        # Frame para la imagen del usuario (lado izquierdo)
+        self.image_frame = ctk.CTkFrame(self.user_content_frame)
+        self.image_frame.pack(side="left", padx=(10, 5), pady=10)
+        
+        self.user_image_label = ctk.CTkLabel(
+            self.image_frame,
+            text="Imagen",
+            font=ctk.CTkFont(size=24),
+            width=180,
+            height=180
+        )
+        self.user_image_label.pack(pady=10)
+        
+        # Frame para información del usuario (lado derecho)
+        self.user_details_frame = ctk.CTkFrame(self.user_content_frame)
+        self.user_details_frame.pack(side="right", fill="both", expand=True, padx=(5, 10), pady=10)
+        
+        # Labels para mostrar información del usuario
+        self.user_name_label = ctk.CTkLabel(
+            self.user_details_frame,
+            text="Nombre: -",
+            font=ctk.CTkFont(size=12),
+            anchor="w",
+            wraplength=200
+        )
+        self.user_name_label.pack(fill="x", padx=10, pady=3)
+        
+        self.user_doc_label = ctk.CTkLabel(
+            self.user_details_frame,
+            text="Documento: -",
+            font=ctk.CTkFont(size=12),
+            anchor="w"
+        )
+        self.user_doc_label.pack(fill="x", padx=10, pady=3)
+        
+        self.user_lpid_label = ctk.CTkLabel(
+            self.user_details_frame,
+            text="LPID: -",
+            font=ctk.CTkFont(size=12),
+            anchor="w"
+        )
+        self.user_lpid_label.pack(fill="x", padx=10, pady=3)
+        
+        self.user_date_label = ctk.CTkLabel(
+            self.user_details_frame,
+            text="Fecha: -",
+            font=ctk.CTkFont(size=12),
+            anchor="w"
+        )
+        self.user_date_label.pack(fill="x", padx=10, pady=3)
     
-    def create_log_section_in_user_panel(self):
-        """Crear sección de logs dentro del panel de usuario."""
-        # Frame para logs dentro del panel de usuario
-        self.log_frame = ctk.CTkFrame(self.user_info_frame)
-        self.log_frame.pack(fill="both", expand=True, padx=10, pady=(10, 0))
+    
+    def create_log_section(self):
+        """Crear sección de log/resultados debajo del panel de usuario."""
+        # Frame para logs debajo del panel de usuario
+        self.log_frame = ctk.CTkFrame(self.right_column)
+        self.log_frame.pack(fill="both", expand=True, padx=10, pady=(0, 10))
         
         self.log_label = ctk.CTkLabel(
             self.log_frame, 
@@ -715,10 +718,6 @@ class ControlIdGUI:
             font=ctk.CTkFont(size=10)
         )
         self.config_btn.pack(side="left", padx=2)
-    
-    def create_log_section(self):
-        """Crear sección de log/resultados - Ya no se usa, los logs están en el panel de usuario."""
-        pass
     
     def log_message(self, message):
         """Agregar mensaje al log."""
@@ -902,7 +901,8 @@ class ControlIdGUI:
                     self.log_message("No se pudo descargar imagen")
                 
                 # Actualizar información del usuario en la interfaz (con imagen si está disponible)
-                self.update_user_info(usuario, ruta_imagen)
+                # Usar after() para ejecutar en el hilo principal de la GUI
+                self.root.after(0, lambda: self.update_user_info(usuario, ruta_imagen))
                 
                 # Paso 2: Procesar usuario en ControlId
                 self.log_message("Procesando usuario en ControlId...")
@@ -954,6 +954,9 @@ class ControlIdGUI:
             # Ocultar placeholder
             self.placeholder_label.pack_forget()
             
+            # Mostrar frame principal de contenido
+            self.user_content_frame.pack(fill="x", padx=10, pady=10)
+            
             # Actualizar información
             self.user_name_label.configure(text=f"Nombre: {usuario['nombre']}")
             self.user_doc_label.configure(text=f"Documento: {usuario['documento']}")
@@ -979,7 +982,7 @@ class ControlIdGUI:
             # Cargar imagen con PIL
             image = Image.open(ruta_imagen)
             
-            # Redimensionar imagen manteniendo proporción
+            # Redimensionar imagen manteniendo proporción (tamaño más pequeño para portátiles)
             image.thumbnail((180, 180), Image.Resampling.LANCZOS)
             
             # Convertir a PhotoImage para tkinter
@@ -1301,6 +1304,10 @@ class ControlIdGUI:
                             
                             # Descargar imagen y asignarla
                             ruta_imagen = self.descargar_imagen_usuario(usuario['lpid'], usuario['documento'])
+                            
+                            # Actualizar información del usuario en la interfaz
+                            self.root.after(0, lambda: self.update_user_info(usuario, ruta_imagen))
+                            
                             if ruta_imagen:
                                 self.log_message("Asignando imagen actualizada...")
                                 if self.asignar_imagen_usuario(usuario_existente['id'], ruta_imagen):
