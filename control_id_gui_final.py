@@ -604,55 +604,60 @@ class ControlIdGUI:
         )
         self.placeholder_label.pack(pady=20)
         
-        # Frame para la imagen del usuario (inicialmente oculto)
-        self.image_frame = ctk.CTkFrame(self.user_info_frame)
+        # Frame principal para imagen e información (inicialmente oculto)
+        self.user_content_frame = ctk.CTkFrame(self.user_info_frame)
         # No hacer pack() inicialmente, se mostrará cuando se actualice la info
+        
+        # Frame para la imagen del usuario (lado izquierdo)
+        self.image_frame = ctk.CTkFrame(self.user_content_frame)
+        self.image_frame.pack(side="left", padx=(10, 5), pady=10)
         
         self.user_image_label = ctk.CTkLabel(
             self.image_frame,
             text="Imagen",
-            font=ctk.CTkFont(size=48),
-            width=200,
-            height=200
+            font=ctk.CTkFont(size=24),
+            width=120,
+            height=120
         )
-        self.user_image_label.pack(pady=20)
+        self.user_image_label.pack(pady=10)
         
-        # Frame para información del usuario (inicialmente oculto)
-        self.user_details_frame = ctk.CTkFrame(self.user_info_frame)
-        # No hacer pack() inicialmente, se mostrará cuando se actualice la info
+        # Frame para información del usuario (lado derecho)
+        self.user_details_frame = ctk.CTkFrame(self.user_content_frame)
+        self.user_details_frame.pack(side="right", fill="both", expand=True, padx=(5, 10), pady=10)
         
         # Labels para mostrar información del usuario
         self.user_name_label = ctk.CTkLabel(
             self.user_details_frame,
             text="Nombre: -",
-            font=ctk.CTkFont(size=14),
-            anchor="w"
+            font=ctk.CTkFont(size=12),
+            anchor="w",
+            wraplength=200
         )
-        self.user_name_label.pack(fill="x", padx=10, pady=5)
+        self.user_name_label.pack(fill="x", padx=10, pady=3)
         
         self.user_doc_label = ctk.CTkLabel(
             self.user_details_frame,
             text="Documento: -",
-            font=ctk.CTkFont(size=14),
+            font=ctk.CTkFont(size=12),
             anchor="w"
         )
-        self.user_doc_label.pack(fill="x", padx=10, pady=5)
+        self.user_doc_label.pack(fill="x", padx=10, pady=3)
         
         self.user_lpid_label = ctk.CTkLabel(
             self.user_details_frame,
             text="LPID: -",
-            font=ctk.CTkFont(size=14),
+            font=ctk.CTkFont(size=12),
             anchor="w"
         )
-        self.user_lpid_label.pack(fill="x", padx=10, pady=5)
+        self.user_lpid_label.pack(fill="x", padx=10, pady=3)
         
         self.user_date_label = ctk.CTkLabel(
             self.user_details_frame,
             text="Fecha: -",
-            font=ctk.CTkFont(size=14),
+            font=ctk.CTkFont(size=12),
             anchor="w"
         )
-        self.user_date_label.pack(fill="x", padx=10, pady=5)
+        self.user_date_label.pack(fill="x", padx=10, pady=3)
         
         # Crear sección de logs dentro del panel de usuario
         self.create_log_section_in_user_panel()
@@ -954,9 +959,8 @@ class ControlIdGUI:
             # Ocultar placeholder
             self.placeholder_label.pack_forget()
             
-            # Mostrar frames de información
-            self.image_frame.pack(pady=10)
-            self.user_details_frame.pack(fill="x", padx=10, pady=10)
+            # Mostrar frame principal de contenido
+            self.user_content_frame.pack(fill="x", padx=10, pady=10)
             
             # Actualizar información
             self.user_name_label.configure(text=f"Nombre: {usuario['nombre']}")
@@ -983,8 +987,8 @@ class ControlIdGUI:
             # Cargar imagen con PIL
             image = Image.open(ruta_imagen)
             
-            # Redimensionar imagen manteniendo proporción
-            image.thumbnail((180, 180), Image.Resampling.LANCZOS)
+            # Redimensionar imagen manteniendo proporción (tamaño más pequeño para portátiles)
+            image.thumbnail((120, 120), Image.Resampling.LANCZOS)
             
             # Convertir a PhotoImage para tkinter
             photo = ImageTk.PhotoImage(image)
