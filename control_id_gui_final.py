@@ -41,6 +41,7 @@ Registramos exactamente qué módulo falla al empaquetar/ejecutar.
 IMPORT_ERRORS = []
 MODULES_LOADED = True
 CURRENT_CONFIG_PATH = None
+CURRENT_ENV = None
 
 def _safe_import(label, import_callable):
     global MODULES_LOADED
@@ -177,6 +178,155 @@ else:
     except Exception as _exc:
         IMPORT_ERRORS.append(f"Fallback de _MEIPASS falló: {_exc}")
 
+# Cargar definición de entornos (opcional)
+try:
+    from env_config import ENVIRONMENTS, ACTIVE_ENV
+    CURRENT_ENV = ACTIVE_ENV if ACTIVE_ENV else "DEV"
+except Exception as _e_env:
+    ENVIRONMENTS = {
+        "DEV": {
+            "azure": {},
+            "control_id": {"default_group_id": 2},
+            "carpetas": {},
+            "miid": {},
+        }
+    }
+    CURRENT_ENV = "DEV"
+    IMPORT_ERRORS.append(f"env_config no disponible: {_e_env}")
+
+def _apply_environment_to_globals(env_name: str):
+    """Aplicar entorno (DEV/PROD) a variables globales de configuración."""
+    try:
+        env_def = ENVIRONMENTS.get(env_name, {})
+        if not env_def:
+            return False
+        azure_cfg = dict(env_def.get('azure', {}))
+        control_cfg = dict(env_def.get('control_id', {}))
+        carpetas_cfg = dict(env_def.get('carpetas', {}))
+        if isinstance(control_cfg, dict) and 'default_group_id' not in control_cfg:
+            control_cfg['default_group_id'] = 2
+        globals()['AZURE_CONFIG'] = azure_cfg
+        globals()['CONTROL_ID_CONFIG'] = control_cfg
+        globals()['CARPETAS_CONFIG'] = carpetas_cfg
+        if 'set_control_id_config' in globals():
+            try:
+                set_control_id_config(control_cfg)
+            except Exception:
+                pass
+        return True
+    except Exception:
+        return False
+
+def _persist_active_env(env_name: str) -> bool:
+    """Persistir ACTIVE_ENV en env_config.py sin tocar el resto del archivo."""
+    try:
+        try:
+            import env_config as _env_mod  # type: ignore
+            env_path = Path(getattr(_env_mod, '__file__', '')).resolve() if getattr(_env_mod, '__file__', None) else None
+        except Exception:
+            env_path = None
+
+        # Candidatos: módulo importado, junto al exe, CWD
+        candidates = []
+        if env_path and env_path.exists():
+            candidates.append(env_path)
+        try:
+            exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
+            exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+            candidates.extend([exe_dir / 'env_config.py', Path.cwd() / 'env_config.py'])
+        except Exception:
+            candidates.append(Path.cwd() / 'env_config.py')
+
+        for path in candidates:
+            try:
+                if path and path.exists():
+                    text = path.read_text(encoding='utf-8')
+                    import re as _re
+                    new_text, n = _re.subn(r"^ACTIVE_ENV\s*=\s*\".*?\"\s*$", f'ACTIVE_ENV = "{env_name}"', text, flags=_re.MULTILINE)
+                    if n == 0:
+                        # Si no existe la línea, insertar al inicio
+                        new_text = f'ACTIVE_ENV = "{env_name}"\n' + text
+                    if new_text != text:
+                        path.write_text(new_text, encoding='utf-8')
+                    return True
+            except Exception:
+                continue
+        return False
+    except Exception:
+        return False
+
+def _get_env_config_path() -> Path:
+    """Resolver ruta de env_config.py (junto al exe, módulo importado o CWD)."""
+    try:
+        import env_config as _env_mod  # type: ignore
+        env_path = Path(getattr(_env_mod, '__file__', '')).resolve() if getattr(_env_mod, '__file__', None) else None
+    except Exception:
+        env_path = None
+    candidates = []
+    if env_path and env_path.exists():
+        candidates.append(env_path)
+    try:
+        exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
+        exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+        candidates.extend([exe_dir / 'env_config.py', Path.cwd() / 'env_config.py'])
+    except Exception:
+        candidates.append(Path.cwd() / 'env_config.py')
+    for path in candidates:
+        if path and path.exists():
+            return path
+    # Fallback: primera opción
+    return candidates[-1]
+
+def _persist_environment_dict(environments: dict, active_env: str) -> bool:
+    """Escribir env_config.py con ACTIVE_ENV y ENVIRONMENTS dados."""
+    try:
+        path = _get_env_config_path()
+        header = "\"\"\"\nDefinición de entornos para la aplicación.\n\nEste archivo es generado/actualizado por la GUI.\n\"\"\"\n\n"
+        content = header
+        content += f'ACTIVE_ENV = "{active_env}"\n\n'
+        # Serializar como JSON para asegurar escapes correctos
+        env_json = json.dumps(environments, ensure_ascii=False, indent=4)
+        content += f"ENVIRONMENTS = {env_json}\n"
+        path.write_text(content, encoding='utf-8')
+        return True
+    except Exception:
+        return False
+
+def _update_env_in_file(env_name: str, sections: dict) -> bool:
+    """Actualizar ENVIRONMENTS[env_name] con los valores de sections y persistir en env_config.py."""
+    try:
+        # Cargar definiciones actuales
+        try:
+            import env_config as _env_mod  # type: ignore
+            environments = dict(getattr(_env_mod, 'ENVIRONMENTS', {}) or {})
+            active_env = str(getattr(_env_mod, 'ACTIVE_ENV', env_name) or env_name)
+        except Exception:
+            environments = dict(globals().get('ENVIRONMENTS', {}) or {})
+            active_env = globals().get('CURRENT_ENV') or env_name
+
+        if env_name not in environments:
+            environments[env_name] = {}
+        # Asegurar secciones
+        for key in ['miid', 'azure', 'control_id', 'carpetas']:
+            if key not in environments[env_name] or not isinstance(environments[env_name].get(key), dict):
+                environments[env_name][key] = {}
+        # Actualizar secciones de forma profunda simple
+        for sec, data in sections.items():
+            if isinstance(data, dict):
+                environments[env_name][sec].update(data)
+            else:
+                environments[env_name][sec] = data
+
+        # Persistir archivo
+        ok = _persist_environment_dict(environments, active_env)
+        if ok:
+            # Refrescar globals
+            globals()['ENVIRONMENTS'] = environments
+            return True
+        return False
+    except Exception:
+        return False
+
 class ControlIdGUI:
     def __init__(self):
         try:
@@ -211,6 +361,14 @@ class ControlIdGUI:
             print("Obteniendo sesión inicial...")
             # Obtener sesión inicial
             if MODULES_LOADED:
+                # Aplicar entorno inicial si está disponible
+                try:
+                    if CURRENT_ENV:
+                        _apply_environment_to_globals(CURRENT_ENV)
+                        self.log_message(f"Entorno inicial: {CURRENT_ENV}")
+                        self.log_environment_details()
+                except Exception:
+                    pass
                 self.obtener_sesion_inicial()
             else:
                 self.log_message("Modo de prueba - Módulos no cargados")
@@ -250,7 +408,7 @@ class ControlIdGUI:
         
         # Columna izquierda - Opciones
         self.left_column = ctk.CTkFrame(self.main_container)
-        self.left_column.pack(side="left", fill="both", expand=True, padx=(0, 10))
+        self.left_column.pack(side="left", fill="both", expand=True, padx=(0, 6))
         
         # Columna derecha - Información del usuario
         self.right_column = ctk.CTkFrame(self.main_container)
@@ -294,6 +452,18 @@ class ControlIdGUI:
             font=ctk.CTkFont(size=12)
         )
         self.status_desc_label.pack(pady=2)
+        # Fila de entorno
+        env_row = ctk.CTkFrame(self.connection_frame)
+        env_row.pack(fill="x", padx=5, pady=(5, 0))
+        ctk.CTkLabel(env_row, text="Entorno:", font=ctk.CTkFont(size=12, weight="bold")).pack(side="left", padx=(5, 10))
+        # Switch: OFF=DEV, ON=PROD
+        self.env_switch = ctk.CTkSwitch(env_row, text="PROD", command=self.toggle_env)
+        try:
+            initial_is_prod = (CURRENT_ENV or "DEV").upper() == "PROD"
+        except Exception:
+            initial_is_prod = False
+        self.env_switch.select() if initial_is_prod else self.env_switch.deselect()
+        self.env_switch.pack(side="left")
         
         self.refresh_btn = ctk.CTkButton(
             self.connection_frame,
@@ -303,6 +473,22 @@ class ControlIdGUI:
             height=35
         )
         self.refresh_btn.pack(pady=10)
+
+    def log_environment_details(self):
+        try:
+            env_name = str((globals().get('CURRENT_ENV') or 'DEV')).upper()
+        except Exception:
+            env_name = 'DEV'
+        try:
+            az = dict(globals().get('AZURE_CONFIG', {}) or {})
+            ci = dict(globals().get('CONTROL_ID_CONFIG', {}) or {})
+            envs = dict(globals().get('ENVIRONMENTS', {}) or {})
+            mi = dict((envs.get(env_name, {}) or {}).get('miid', {}) or {})
+        except Exception:
+            az, ci, mi = {}, {}, {}
+        self.log_message(f"[ENV] {env_name} -> MiID host={mi.get('host','-')} db={mi.get('database','-')}")
+        self.log_message(f"[ENV] {env_name} -> Azure servidor={az.get('servidor','-')} bd={az.get('base_datos','-')}")
+        self.log_message(f"[ENV] {env_name} -> ControlId base_url={ci.get('base_url','-')}")
     
     def create_user_options_section(self):
         """Crear sección de opciones de usuario."""
@@ -572,6 +758,38 @@ class ControlIdGUI:
             config_window = ConfiguracionWindow(self.root, self)
         except Exception as e:
             self.log_message(f"Error al abrir configuración: {str(e)}")
+
+    def toggle_env(self):
+        """Alternar entorno entre DEV y PROD."""
+        try:
+            new_env = "PROD" if self.env_switch.get() else "DEV"
+            self.log_message(f"Cambiando entorno a {new_env}...")
+            self.status_label.configure(text="Actualizando entorno...", text_color="orange")
+            ok = _apply_environment_to_globals(new_env)
+            if ok:
+                globals()['CURRENT_ENV'] = new_env
+                # Exportar variable de entorno visible a submódulos si la consultan
+                try:
+                    import os as _os
+                    _os.environ['ACTIVE_ENV'] = new_env
+                except Exception:
+                    pass
+                # Persistir en env_config.py
+                _persist_active_env(new_env)
+                # Reiniciar sesión con nueva configuración
+                self.session = None
+                self.obtener_sesion_inicial()
+                self.log_environment_details()
+                self.log_message(f"Entorno activo: {new_env}")
+            else:
+                self.log_message("No se pudo aplicar el entorno. Revise env_config.py")
+                # Revertir visualmente
+                if new_env == "PROD":
+                    self.env_switch.deselect()
+                else:
+                    self.env_switch.select()
+        except Exception as e:
+            self.log_message(f"Error al cambiar entorno: {str(e)}")
     
     def obtener_sesion_inicial(self):
         """Obtener sesión inicial de ControlId."""
@@ -1134,14 +1352,25 @@ class ConfiguracionWindow:
         # Crear ventana modal
         self.window = ctk.CTkToplevel(parent)
         self.window.title("Configuración del Sistema")
-        self.window.geometry("600x700")
-        self.window.resizable(False, False)
+        # Dimensiones iniciales y mínimas más amplias para asegurar visibilidad de botones
+        init_w, init_h = 760, 820
+        self.window.geometry(f"{init_w}x{init_h}")
+        self.window.resizable(True, True)
+        try:
+            self.window.minsize(650, 740)
+        except Exception:
+            pass
         
-        # Centrar ventana
+        # Centrar ventana con las dimensiones actuales
         self.window.update_idletasks()
-        x = (self.window.winfo_screenwidth() // 2) - (600 // 2)
-        y = (self.window.winfo_screenheight() // 2) - (700 // 2)
-        self.window.geometry(f"600x700+{x}+{y}")
+        try:
+            cur_w = self.window.winfo_width() or init_w
+            cur_h = self.window.winfo_height() or init_h
+        except Exception:
+            cur_w, cur_h = init_w, init_h
+        x = (self.window.winfo_screenwidth() // 2) - (cur_w // 2)
+        y = (self.window.winfo_screenheight() // 2) - (cur_h // 2)
+        self.window.geometry(f"{cur_w}x{cur_h}+{x}+{y}")
         
         # Cargar configuración actual
         self.cargar_configuracion()
@@ -1154,52 +1383,30 @@ class ConfiguracionWindow:
         self.window.grab_set()
     
     def cargar_configuracion(self):
-        """Cargar configuración actual desde config.py."""
+        """Cargar configuración actual desde env_config (ENVIRONMENTS[CURRENT_ENV]) o fallback a config.py."""
         try:
-            # 1) Intentar cargar desde CURRENT_CONFIG_PATH si está definido; luego junto al .exe; luego CWD; por último import normal
-            from importlib.util import spec_from_file_location, module_from_spec
-            cfg_mod = None
-            global CURRENT_CONFIG_PATH
-            candidate_paths = []
-            if CURRENT_CONFIG_PATH:
-                candidate_paths.append(Path(CURRENT_CONFIG_PATH))
+            # Preferir env_config
             try:
-                exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
-                exe_dir = exe_dir.parent if exe_dir else Path.cwd()
-                candidate_paths.extend([exe_dir / 'config.py', Path.cwd() / 'config.py'])
+                env_name = str((globals().get('CURRENT_ENV') or 'DEV')).upper()
             except Exception:
-                candidate_paths.append(Path.cwd() / 'config.py')
+                env_name = 'DEV'
 
-            for cfg_path in candidate_paths:
-                try:
-                    if cfg_path and cfg_path.exists():
-                        spec = spec_from_file_location('config_external_window', str(cfg_path))
-                        if spec and spec.loader:
-                            mod = module_from_spec(spec)
-                            spec.loader.exec_module(mod)
-                            cfg_mod = mod
-                            break
-                except Exception:
-                    continue
+            envs = dict(globals().get('ENVIRONMENTS', {}) or {})
+            env_def = envs.get(env_name, {}) if isinstance(envs, dict) else {}
 
-            if cfg_mod is None:
-                import importlib
-                cfg_mod = importlib.import_module('config')
+            miid_cfg = dict(env_def.get('miid', {}) or {})
+            azure_cfg = dict(env_def.get('azure', {}) or {})
+            control_cfg = dict(env_def.get('control_id', {}) or {})
+            carpetas_cfg = dict(env_def.get('carpetas', {}) or {})
 
-            MIID_CONFIG = getattr(cfg_mod, 'MIID_CONFIG', {})
-            AZURE_CONFIG = getattr(cfg_mod, 'AZURE_CONFIG', {})
-            CONTROL_ID_CONFIG = getattr(cfg_mod, 'CONTROL_ID_CONFIG', {})
-            CARPETAS_CONFIG = getattr(cfg_mod, 'CARPETAS_CONFIG', {})
-            try:
-                _ec_id_val = int(getattr(cfg_mod, 'MIID_EC_ID', 11000))
-            except Exception:
-                _ec_id_val = 11000
+            if isinstance(control_cfg, dict) and 'default_group_id' not in control_cfg:
+                control_cfg['default_group_id'] = 2
 
             self.config_data = {
-                'miid': {**MIID_CONFIG.copy(), 'ec_id': _ec_id_val},
-                'azure': AZURE_CONFIG.copy(),
-                'control_id': CONTROL_ID_CONFIG.copy(),
-                'carpetas': CARPETAS_CONFIG.copy()
+                'miid': {**miid_cfg, 'ec_id': miid_cfg.get('ec_id', 11000)},
+                'azure': azure_cfg,
+                'control_id': control_cfg,
+                'carpetas': carpetas_cfg
             }
         except Exception as e:
             print(f"Error al cargar configuración: {e}")
@@ -1242,6 +1449,27 @@ class ConfiguracionWindow:
             font=ctk.CTkFont(size=20, weight="bold")
         )
         title_label.pack(pady=15)
+        # Indicador de entorno actual
+        try:
+            env_name = str((globals().get('CURRENT_ENV') or 'DEV')).upper()
+        except Exception:
+            env_name = 'DEV'
+        env_color = 'green' if env_name == 'PROD' else 'orange'
+        self.env_indicator = ctk.CTkLabel(
+            self.window,
+            text=f"Entorno actual: {env_name}",
+            text_color=env_color,
+            font=ctk.CTkFont(size=12, weight="bold")
+        )
+        self.env_indicator.pack(pady=(0, 8))
+
+        # Selector de entorno dentro de Configuración
+        selector_frame = ctk.CTkFrame(self.window)
+        selector_frame.pack(fill="x", padx=20, pady=(0, 10))
+        ctk.CTkLabel(selector_frame, text="Cambiar entorno:", font=ctk.CTkFont(size=12, weight="bold")).pack(side="left", padx=(5, 10))
+        self.env_segment = ctk.CTkSegmentedButton(selector_frame, values=["DEV", "PROD"], command=self._on_env_segment_changed)
+        self.env_segment.set(env_name)
+        self.env_segment.pack(side="left")
         
         # Crear notebook para pestañas
         self.notebook = ctk.CTkTabview(self.window)
@@ -1261,6 +1489,105 @@ class ConfiguracionWindow:
         
         # Botones de acción
         self.crear_botones_accion()
+
+    def _on_env_segment_changed(self, value):
+        """Callback al cambiar el entorno desde el selector de la Configuración."""
+        try:
+            new_env = str(value).upper()
+            # Aplicar y persistir
+            ok = _apply_environment_to_globals(new_env)
+            if ok:
+                globals()['CURRENT_ENV'] = new_env
+                _persist_active_env(new_env)
+                # Actualizar indicador visual
+                env_color = 'green' if new_env == 'PROD' else 'orange'
+                if hasattr(self, 'env_indicator'):
+                    self.env_indicator.configure(text=f"Entorno actual: {new_env}", text_color=env_color)
+                # Recargar campos con la config activa en memoria
+                self._populate_fields_from_globals()
+                if hasattr(self.main_app, 'log_message'):
+                    self.main_app.log_message(f"Entorno activo desde Configuración: {new_env}")
+                    if hasattr(self.main_app, 'log_environment_details'):
+                        self.main_app.log_environment_details()
+                # Opcional: resetear sesión en la app principal para re-login
+                if hasattr(self.main_app, 'session'):
+                    self.main_app.session = None
+                # Exportar variable de entorno
+                try:
+                    import os as _os
+                    _os.environ['ACTIVE_ENV'] = new_env
+                except Exception:
+                    pass
+            else:
+                if hasattr(self.main_app, 'log_message'):
+                    self.main_app.log_message("No se pudo aplicar el entorno desde Configuración")
+        except Exception as e:
+            if hasattr(self.main_app, 'log_message'):
+                self.main_app.log_message(f"Error al cambiar entorno en Configuración: {str(e)}")
+
+    def _populate_fields_from_globals(self):
+        """Volcar valores de AZURE_CONFIG / CONTROL_ID_CONFIG / CARPETAS_CONFIG a los inputs actuales."""
+        try:
+            az = dict(globals().get('AZURE_CONFIG', {}) or {})
+            ci = dict(globals().get('CONTROL_ID_CONFIG', {}) or {})
+            ca = dict(globals().get('CARPETAS_CONFIG', {}) or {})
+            # MiID desde ENVIRONMENTS
+            try:
+                env_name = str((globals().get('CURRENT_ENV') or 'DEV')).upper()
+            except Exception:
+                env_name = 'DEV'
+            envs = dict(globals().get('ENVIRONMENTS', {}) or {})
+            mi = dict((envs.get(env_name, {}) or {}).get('miid', {}) or {})
+        except Exception:
+            az, ci, ca, mi = {}, {}, {}, {}
+
+        # Azure
+        if hasattr(self, 'azure_servidor'):
+            self.azure_servidor.delete(0, 'end'); self.azure_servidor.insert(0, az.get('servidor', ''))
+        if hasattr(self, 'azure_database'):
+            self.azure_database.delete(0, 'end'); self.azure_database.insert(0, az.get('base_datos', ''))
+        if hasattr(self, 'azure_user'):
+            self.azure_user.delete(0, 'end'); self.azure_user.insert(0, az.get('usuario', ''))
+        if hasattr(self, 'azure_password'):
+            self.azure_password.delete(0, 'end'); self.azure_password.insert(0, az.get('contraseña', ''))
+        if hasattr(self, 'azure_sp'):
+            self.azure_sp.delete(0, 'end'); self.azure_sp.insert(0, az.get('stored_procedure', ''))
+        if hasattr(self, 'azure_context'):
+            self.azure_context.delete(0, 'end'); self.azure_context.insert(0, az.get('business_context', ''))
+
+        # ControlId
+        if hasattr(self, 'control_url'):
+            self.control_url.delete(0, 'end'); self.control_url.insert(0, ci.get('base_url', ''))
+        if hasattr(self, 'control_user'):
+            self.control_user.delete(0, 'end'); self.control_user.insert(0, ci.get('login', ''))
+        if hasattr(self, 'control_password'):
+            self.control_password.delete(0, 'end'); self.control_password.insert(0, ci.get('password', ''))
+        if hasattr(self, 'control_group_id'):
+            try:
+                _gid = str(ci.get('default_group_id', 2))
+            except Exception:
+                _gid = '2'
+            self.control_group_id.delete(0, 'end'); self.control_group_id.insert(0, _gid)
+
+        # Carpetas
+        if hasattr(self, 'carpeta_temp'):
+            self.carpeta_temp.delete(0, 'end'); self.carpeta_temp.insert(0, ca.get('carpeta_local_temp', ''))
+        if hasattr(self, 'extension_img'):
+            self.extension_img.delete(0, 'end'); self.extension_img.insert(0, ca.get('extension_imagen', '.jpg'))
+
+        # MiID
+        if hasattr(self, 'miid_host'):
+            self.miid_host.delete(0, 'end'); self.miid_host.insert(0, mi.get('host', ''))
+        if hasattr(self, 'miid_port'):
+            self.miid_port.delete(0, 'end'); self.miid_port.insert(0, str(mi.get('port', 3306)))
+        if hasattr(self, 'miid_user'):
+            self.miid_user.delete(0, 'end'); self.miid_user.insert(0, mi.get('user', ''))
+        if hasattr(self, 'miid_password'):
+            self.miid_password.delete(0, 'end'); self.miid_password.insert(0, mi.get('password', ''))
+        if hasattr(self, 'miid_database'):
+            self.miid_database.delete(0, 'end'); self.miid_database.insert(0, mi.get('database', ''))
+        if hasattr(self, 'miid_ec_id'):
+            self.miid_ec_id.delete(0, 'end'); self.miid_ec_id.insert(0, str(mi.get('ec_id', 11000)))
     
     def crear_pestana_miid(self):
         """Crear pestaña de configuración MiID."""
@@ -1412,7 +1739,7 @@ class ConfiguracionWindow:
     def crear_botones_accion(self):
         """Crear botones de acción."""
         button_frame = ctk.CTkFrame(self.window)
-        button_frame.pack(fill="x", padx=20, pady=10)
+        button_frame.pack(side="bottom", fill="x", padx=20, pady=10)
         
         # Botón Guardar
         save_btn = ctk.CTkButton(
@@ -1448,7 +1775,7 @@ class ConfiguracionWindow:
         test_btn.pack(side="left", padx=10, pady=10)
     
     def guardar_configuracion(self):
-        """Guardar configuración en archivo config.py."""
+        """Guardar configuración en el entorno activo dentro de env_config.py."""
         try:
             # Recopilar datos de los campos
             nueva_config = {
@@ -1484,103 +1811,57 @@ class ConfiguracionWindow:
                 }
             }
             
-            # Generar contenido del archivo config.py
-            config_content = f'''#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Configuración del sistema ControlId.
-Este archivo se genera automáticamente desde la GUI de configuración.
-"""
-
-# Configuración MiID (MySQL)
-MIID_CONFIG = {{
-    "host": "{nueva_config['miid']['host']}",
-    "port": {nueva_config['miid']['port']},
-    "user": "{nueva_config['miid']['user']}",
-    "password": "{nueva_config['miid']['password']}",
-    "database": "{nueva_config['miid']['database']}"
-}}
-
-# Filtro de EC_ID para MiID
-MIID_EC_ID = {nueva_config['miid']['ec_id']}
-
-# Configuración Azure SQL (BykeeperDesarrollo)
-AZURE_CONFIG = {{
-    "servidor": "{nueva_config['azure']['servidor']}",
-    "base_datos": "{nueva_config['azure']['base_datos']}",
-    "usuario": "{nueva_config['azure']['usuario']}",
-    "contraseña": "{nueva_config['azure']['contraseña']}",
-    "stored_procedure": "{nueva_config['azure']['stored_procedure']}",
-    "business_context": "{nueva_config['azure']['business_context']}"
-}}
-
-# Configuración ControlId
-CONTROL_ID_CONFIG = {{
-    "base_url": "{nueva_config['control_id']['base_url']}",
-    "login": "{nueva_config['control_id']['login']}",
-    "password": "{nueva_config['control_id']['password']}",
-    "default_group_id": {nueva_config['control_id']['default_group_id']}
-}}
-
-# Configuración de carpetas
-CARPETAS_CONFIG = {{
-    "carpeta_local_temp": r"{nueva_config['carpetas']['carpeta_local_temp']}",
-    "extension_imagen": "{nueva_config['carpetas']['extension_imagen']}"
-}}
-'''
-            
-            # Determinar ruta de guardado: junto al .exe si está congelado; si no, CWD
+            # Determinar entorno activo
             try:
-                exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
-                exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+                env_name = str((globals().get('CURRENT_ENV') or 'DEV')).upper()
             except Exception:
-                exe_dir = Path.cwd()
+                env_name = 'DEV'
 
-            target_cfg_path = exe_dir / 'config.py'
+            # Construir secciones para persistir en ENVIRONMENTS[env_name]
+            sections = {
+                'miid': {
+                    'host': nueva_config['miid']['host'],
+                    'port': nueva_config['miid']['port'],
+                    'user': nueva_config['miid']['user'],
+                    'password': nueva_config['miid']['password'],
+                    'database': nueva_config['miid']['database'],
+                    'ec_id': nueva_config['miid']['ec_id'],
+                },
+                'azure': {
+                    'servidor': nueva_config['azure']['servidor'],
+                    'base_datos': nueva_config['azure']['base_datos'],
+                    'usuario': nueva_config['azure']['usuario'],
+                    'contraseña': nueva_config['azure']['contraseña'],
+                    'stored_procedure': nueva_config['azure']['stored_procedure'],
+                    'business_context': nueva_config['azure']['business_context'],
+                },
+                'control_id': {
+                    'base_url': nueva_config['control_id']['base_url'],
+                    'login': nueva_config['control_id']['login'],
+                    'password': nueva_config['control_id']['password'],
+                    'default_group_id': nueva_config['control_id']['default_group_id'],
+                },
+                'carpetas': {
+                    'carpeta_local_temp': nueva_config['carpetas']['carpeta_local_temp'],
+                    'extension_imagen': nueva_config['carpetas']['extension_imagen'],
+                },
+            }
 
-            # Escribir archivo de configuración en la ruta destino
-            try:
-                with open(target_cfg_path, 'w', encoding='utf-8') as f:
-                    f.write(config_content)
-            except Exception as _e:
-                # Si falla escribir junto al exe, intentar en CWD como fallback
-                try:
-                    with open('config.py', 'w', encoding='utf-8') as f:
-                        f.write(config_content)
-                    target_cfg_path = Path.cwd() / 'config.py'
-                except Exception:
-                    raise _e
+            # Persistir en env_config.py
+            persisted = _update_env_in_file(env_name, sections)
+            if not persisted:
+                self.mostrar_mensaje("No se pudo guardar en env_config.py", "Error")
+            else:
+                # Aplicar a globals inmediatamente
+                _apply_environment_to_globals(env_name)
+                if hasattr(self, 'main_app') and hasattr(self.main_app, 'session'):
+                    self.main_app.session = None
+                if hasattr(self.main_app, 'status_label'):
+                    self.main_app.status_label.configure(text="Desconectado", text_color="red")
+                
+                # Mostrar mensaje de éxito
+                self.mostrar_mensaje("Configuración guardada exitosamente en el entorno activo", "Éxito")
 
-            # Recargar dinámicamente el módulo de configuración y propagar cambios desde target_cfg_path
-            try:
-                from importlib.util import spec_from_file_location, module_from_spec
-                spec = spec_from_file_location('config_external_runtime', str(target_cfg_path))
-                if spec and spec.loader:
-                    mod = module_from_spec(spec)
-                    spec.loader.exec_module(mod)
-                    global CURRENT_CONFIG_PATH
-                    CURRENT_CONFIG_PATH = str(target_cfg_path)
-                    # Actualizar variables globales utilizadas en la app
-                    global AZURE_CONFIG, CARPETAS_CONFIG, CONTROL_ID_CONFIG
-                    AZURE_CONFIG = getattr(mod, 'AZURE_CONFIG', AZURE_CONFIG)
-                    CARPETAS_CONFIG = getattr(mod, 'CARPETAS_CONFIG', CARPETAS_CONFIG)
-                    CONTROL_ID_CONFIG = getattr(mod, 'CONTROL_ID_CONFIG', CONTROL_ID_CONFIG)
-                    if isinstance(CONTROL_ID_CONFIG, dict) and 'default_group_id' not in CONTROL_ID_CONFIG:
-                        CONTROL_ID_CONFIG['default_group_id'] = 2
-                    # Actualizar configuración usada por el flujo (peticiones HTTP)
-                    if 'set_control_id_config' in globals():
-                        set_control_id_config(CONTROL_ID_CONFIG)
-                    # Invalidar sesión actual para forzar re-login con nueva IP/credenciales
-                    if hasattr(self, 'main_app') and hasattr(self.main_app, 'session'):
-                        self.main_app.session = None
-                        if hasattr(self.main_app, 'status_label'):
-                            self.main_app.status_label.configure(text="Desconectado", text_color="red")
-            except Exception as _e:
-                self.mostrar_mensaje(f"Advertencia: no se pudo recargar configuración en caliente: {_e}", "Error")
-
-            # Mostrar mensaje de éxito
-            self.mostrar_mensaje("Configuración guardada exitosamente", "Éxito")
-            
             # Cerrar ventana
             self.window.destroy()
             

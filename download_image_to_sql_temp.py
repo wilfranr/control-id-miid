@@ -11,12 +11,44 @@ import json
 from typing import Optional
 from pathlib import Path
 
-# Importar configuración
+# Importar configuración base y soporte de entornos
 try:
-    from config import AZURE_CONFIG, CARPETAS_CONFIG
+    from config import AZURE_CONFIG as _CFG_AZURE, CARPETAS_CONFIG
 except ImportError:
     print("  Error: No se pudo importar config.py")
     exit(1)
+
+try:
+    from env_config import ENVIRONMENTS as _ENVIRONMENTS, ACTIVE_ENV as _ACTIVE_ENV
+except Exception:
+    _ENVIRONMENTS, _ACTIVE_ENV = {}, None
+
+def _resolve_azure_config():
+    try:
+        import os as _os
+        env_name = str((_os.environ.get('ACTIVE_ENV') or _ACTIVE_ENV or 'DEV')).upper()
+        try:
+            import importlib as _importlib
+            _env = _importlib.import_module('env_config')
+            envs_live = dict(getattr(_env, 'ENVIRONMENTS', {}) or {})
+        except Exception:
+            envs_live = dict(_ENVIRONMENTS or {})
+        az = dict(((envs_live.get(env_name) or {}).get('azure')) or {})
+        if az:
+            return az
+    except Exception:
+        pass
+    try:
+        return dict(_CFG_AZURE)
+    except Exception:
+        return {
+            'servidor': '',
+            'base_datos': '',
+            'usuario': '',
+            'contraseña': '',
+            'stored_procedure': '',
+            'business_context': ''
+        }
 
 def conectar_base_datos(servidor: str, base_datos: str, usuario: str, contraseña: str) -> pyodbc.Connection:
     """
@@ -47,7 +79,7 @@ def conectar_base_datos(servidor: str, base_datos: str, usuario: str, contraseñ
             f"TrustServerCertificate=no;"
         )
         
-        print("Conectando a la base de datos...")
+        print("Conectando a Azure SQL...")
         conexion = pyodbc.connect(connection_string)
         print("Conexión establecida exitosamente")
         return conexion
@@ -241,6 +273,7 @@ def main():
     
     try:
         # Conectar a la base de datos
+        AZURE_CONFIG = _resolve_azure_config()
         conexion = conectar_base_datos(
             AZURE_CONFIG['servidor'],
             AZURE_CONFIG['base_datos'],

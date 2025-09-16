@@ -8,12 +8,17 @@ Script que implementa el flujo inteligente de usuarios:
 """
 
 import requests
+import time
 import json
 import logging
 from pathlib import Path
 from typing import Optional, Dict, Any
 from GetUserMiID import obtener_ultimo_usuario_midd
-from config import CONTROL_ID_CONFIG
+from config import CONTROL_ID_CONFIG as _CFG_CONTROL_ID
+try:
+    from env_config import ENVIRONMENTS as _ENVIRONMENTS, ACTIVE_ENV as _ACTIVE_ENV
+except Exception:
+    _ENVIRONMENTS, _ACTIVE_ENV = {}, None
 
 # Configuración de logging
 logging.basicConfig(
@@ -28,8 +33,34 @@ def set_control_id_config(new_config: Dict[str, Any]) -> None:
     Esto es útil cuando la GUI guarda un nuevo `config.py` y queremos que
     las funciones de este módulo usen los valores recientes sin reiniciar.
     """
-    global CONTROL_ID_CONFIG
-    CONTROL_ID_CONFIG = new_config
+    global _CFG_CONTROL_ID
+    _CFG_CONTROL_ID = new_config
+
+def _resolve_control_id_config() -> Dict[str, Any]:
+    """Resolver config de ControlId desde env_config[ACTIVE_ENV] si existe; fallback a config.CONTROL_ID_CONFIG."""
+    try:
+        import os as _os
+        env_name = str((_os.environ.get('ACTIVE_ENV') or _ACTIVE_ENV or 'DEV')).upper()
+        try:
+            import importlib as _importlib
+            _env = _importlib.import_module('env_config')
+            envs_live = dict(getattr(_env, 'ENVIRONMENTS', {}) or {})
+        except Exception:
+            envs_live = dict(_ENVIRONMENTS or {})
+        ci = dict(((envs_live.get(env_name) or {}).get('control_id')) or {})
+        if ci:
+            if 'default_group_id' not in ci:
+                ci['default_group_id'] = 2
+            return ci
+    except Exception:
+        pass
+    try:
+        ci = dict(_CFG_CONTROL_ID)
+        if 'default_group_id' not in ci:
+            ci['default_group_id'] = 2
+        return ci
+    except Exception:
+        return {'base_url': '', 'login': '', 'password': '', 'default_group_id': 2}
 
 def buscar_usuario_por_registration(session: str, registration: str) -> Optional[Dict[str, Any]]:
     """
@@ -45,13 +76,15 @@ def buscar_usuario_por_registration(session: str, registration: str) -> Optional
     try:
         logger.info(f"Buscando usuario con documento: {registration}")
         
-        url = f"{CONTROL_ID_CONFIG['base_url']}/load_objects.fcgi"
+        cfg = _resolve_control_id_config()
+        url = f"{cfg['base_url']}/load_objects.fcgi"
         params = {'session': session}
         payload = {
             "object": "users"
         }
         headers = {"Content-Type": "application/json"}
         
+        logger.info(f"[ControlId] load_objects -> base_url={cfg['base_url']}")
         response = requests.post(url, params=params, headers=headers, json=payload, timeout=30)
         response.raise_for_status()
         
@@ -96,7 +129,8 @@ def crear_usuario_nuevo(session: str, nombre: str, documento: str) -> Optional[s
     try:
         logger.info(f"Creando nuevo usuario: {nombre} ({documento})")
         
-        url = f"{CONTROL_ID_CONFIG['base_url']}/create_objects.fcgi"
+        cfg = _resolve_control_id_config()
+        url = f"{cfg['base_url']}/create_objects.fcgi"
         params = {'session': session}
         payload = {
             "object": "users",
@@ -111,6 +145,7 @@ def crear_usuario_nuevo(session: str, nombre: str, documento: str) -> Optional[s
         }
         headers = {"Content-Type": "application/json"}
         
+        logger.info(f"[ControlId] create_objects -> base_url={cfg['base_url']}")
         response = requests.post(url, params=params, headers=headers, json=payload, timeout=30)
         response.raise_for_status()
         
@@ -152,7 +187,8 @@ def crear_grupo_para_usuario(session: str, user_id: str, group_id: int = 2) -> b
     try:
         # Verificar si ya existe la relación
         try:
-            url_check = f"{CONTROL_ID_CONFIG['base_url']}/load_objects.fcgi"
+            cfg = _resolve_control_id_config()
+            url_check = f"{cfg['base_url']}/load_objects.fcgi"
             params_check = {'session': session}
             payload_check = {"object": "user_groups"}
             headers_check = {"Content-Type": "application/json"}
@@ -177,7 +213,7 @@ def crear_grupo_para_usuario(session: str, user_id: str, group_id: int = 2) -> b
 
         logger.info(f"Asignando grupo {group_id} al usuario ID {user_id}")
 
-        url = f"{CONTROL_ID_CONFIG['base_url']}/create_objects.fcgi"
+        url = f"{cfg['base_url']}/create_objects.fcgi"
         params = {'session': session}
         payload = {
             "object": "user_groups",
@@ -190,6 +226,7 @@ def crear_grupo_para_usuario(session: str, user_id: str, group_id: int = 2) -> b
         }
         headers = {"Content-Type": "application/json"}
 
+        logger.info(f"[ControlId] user_groups.create -> base_url={cfg['base_url']}")
         response = requests.post(url, params=params, headers=headers, json=payload, timeout=30)
         # Algunos equipos devuelven 409/400 si ya existe; lo tratamos como éxito idempotente
         if response.status_code >= 200 and response.status_code < 300:
@@ -238,7 +275,8 @@ def modificar_usuario_existente(session: str, user_id: str, nombre: str, documen
     try:
         logger.info(f"Modificando usuario ID {user_id}: {nombre} ({documento})")
         
-        url = f"{CONTROL_ID_CONFIG['base_url']}/create_or_modify_objects.fcgi"
+        cfg = _resolve_control_id_config()
+        url = f"{cfg['base_url']}/create_or_modify_objects.fcgi"
         params = {'session': session}
         payload = {
             "object": "users",
@@ -254,6 +292,7 @@ def modificar_usuario_existente(session: str, user_id: str, nombre: str, documen
         }
         headers = {"Content-Type": "application/json"}
         
+        logger.info(f"[ControlId] create_or_modify -> base_url={cfg['base_url']}")
         response = requests.post(url, params=params, headers=headers, json=payload, timeout=30)
         response.raise_for_status()
         
@@ -286,7 +325,8 @@ def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: str) -> bool
         logger.info(f"Asignando imagen al usuario ID: {user_id}")
         
         # Usar el endpoint correcto según la documentación
-        url = f"{CONTROL_ID_CONFIG['base_url']}/user_set_image.fcgi"
+        cfg = _resolve_control_id_config()
+        url = f"{cfg['base_url']}/user_set_image.fcgi"
         
         # Generar timestamp actual
         timestamp = str(int(time.time()))
@@ -306,6 +346,7 @@ def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: str) -> bool
         logger.info(f"Tamaño de imagen: {len(image_data)} bytes")
         logger.info(f"Timestamp: {timestamp}")
         
+        logger.info(f"[ControlId] user_set_image -> base_url={cfg['base_url']}")
         response = requests.post(url, params=params, headers=headers, data=image_data, timeout=30)
         
         # Log de la respuesta para debugging
@@ -363,7 +404,8 @@ def procesar_usuario_inteligente(session: str, nombre: str, documento: str) -> O
             if modificar_usuario_existente(session, str(user_id), nombre, documento):
                 logger.info(f"Usuario modificado exitosamente. ID: {user_id}")
                 # Asegurar asignación de grupo por defecto
-                _gid = int((CONTROL_ID_CONFIG or {}).get('default_group_id', 2))
+                cfg_ci = _resolve_control_id_config()
+                _gid = int((cfg_ci or {}).get('default_group_id', 2))
                 if not crear_grupo_para_usuario(session, str(user_id), _gid):
                     logger.warning("No se pudo asignar el grupo al usuario modificado")
                 return str(user_id)
@@ -377,7 +419,8 @@ def procesar_usuario_inteligente(session: str, nombre: str, documento: str) -> O
             if user_id:
                 logger.info(f"Usuario creado exitosamente. ID: {user_id}")
                 # Asignar grupo por defecto al usuario recién creado
-                _gid = int((CONTROL_ID_CONFIG or {}).get('default_group_id', 2))
+                cfg_ci = _resolve_control_id_config()
+                _gid = int((cfg_ci or {}).get('default_group_id', 2))
                 if not crear_grupo_para_usuario(session, user_id, _gid):
                     logger.warning("No se pudo asignar el grupo al nuevo usuario")
                 return user_id
@@ -431,13 +474,15 @@ def obtener_sesion():
     try:
         logger.info("Obteniendo sesión de ControlId...")
         
-        url = f"{CONTROL_ID_CONFIG['base_url']}/login.fcgi"
+        cfg = _resolve_control_id_config()
+        url = f"{cfg['base_url']}/login.fcgi"
         payload = {
-            "login": CONTROL_ID_CONFIG['login'],
-            "password": CONTROL_ID_CONFIG['password']
+            "login": cfg['login'],
+            "password": cfg['password']
         }
         headers = {"Content-Type": "application/json"}
         
+        logger.info(f"[ControlId] login -> base_url={cfg['base_url']} user={cfg['login']}")
         response = requests.post(url, json=payload, headers=headers, timeout=30)
         response.raise_for_status()
         
