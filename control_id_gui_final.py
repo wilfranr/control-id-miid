@@ -616,8 +616,8 @@ class ControlIdGUI:
             self.image_frame,
             text="Imagen",
             font=ctk.CTkFont(size=24),
-            width=120,
-            height=120
+            width=180,
+            height=180
         )
         self.user_image_label.pack(pady=10)
         
@@ -982,7 +982,7 @@ class ControlIdGUI:
             image = Image.open(ruta_imagen)
             
             # Redimensionar imagen manteniendo proporción (tamaño más pequeño para portátiles)
-            image.thumbnail((120, 120), Image.Resampling.LANCZOS)
+            image.thumbnail((180, 180), Image.Resampling.LANCZOS)
             
             # Convertir a PhotoImage para tkinter
             photo = ImageTk.PhotoImage(image)
