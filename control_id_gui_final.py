@@ -658,15 +658,13 @@ class ControlIdGUI:
             anchor="w"
         )
         self.user_date_label.pack(fill="x", padx=10, pady=3)
-        
-        # Crear sección de logs dentro del panel de usuario
-        self.create_log_section_in_user_panel()
     
-    def create_log_section_in_user_panel(self):
-        """Crear sección de logs dentro del panel de usuario."""
-        # Frame para logs dentro del panel de usuario
-        self.log_frame = ctk.CTkFrame(self.user_info_frame)
-        self.log_frame.pack(fill="both", expand=True, padx=10, pady=(10, 0))
+    
+    def create_log_section(self):
+        """Crear sección de log/resultados debajo del panel de usuario."""
+        # Frame para logs debajo del panel de usuario
+        self.log_frame = ctk.CTkFrame(self.right_column)
+        self.log_frame.pack(fill="both", expand=True, padx=10, pady=(0, 10))
         
         self.log_label = ctk.CTkLabel(
             self.log_frame, 
@@ -719,10 +717,6 @@ class ControlIdGUI:
             font=ctk.CTkFont(size=10)
         )
         self.config_btn.pack(side="left", padx=2)
-    
-    def create_log_section(self):
-        """Crear sección de log/resultados - Ya no se usa, los logs están en el panel de usuario."""
-        pass
     
     def log_message(self, message):
         """Agregar mensaje al log."""
