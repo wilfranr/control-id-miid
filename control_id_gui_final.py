@@ -595,9 +595,18 @@ class ControlIdGUI:
         )
         self.user_info_label.pack(pady=15)
         
-        # Frame para la imagen del usuario
+        # Mensaje inicial (placeholder)
+        self.placeholder_label = ctk.CTkLabel(
+            self.user_info_frame,
+            text="Busque un usuario para ver su información aquí.",
+            text_color="gray",
+            font=ctk.CTkFont(size=14)
+        )
+        self.placeholder_label.pack(pady=20)
+        
+        # Frame para la imagen del usuario (inicialmente oculto)
         self.image_frame = ctk.CTkFrame(self.user_info_frame)
-        self.image_frame.pack(pady=10)
+        # No hacer pack() inicialmente, se mostrará cuando se actualice la info
         
         self.user_image_label = ctk.CTkLabel(
             self.image_frame,
@@ -608,9 +617,9 @@ class ControlIdGUI:
         )
         self.user_image_label.pack(pady=20)
         
-        # Frame para información del usuario
+        # Frame para información del usuario (inicialmente oculto)
         self.user_details_frame = ctk.CTkFrame(self.user_info_frame)
-        self.user_details_frame.pack(fill="x", padx=10, pady=10)
+        # No hacer pack() inicialmente, se mostrará cuando se actualice la info
         
         # Labels para mostrar información del usuario
         self.user_name_label = ctk.CTkLabel(
@@ -644,15 +653,6 @@ class ControlIdGUI:
             anchor="w"
         )
         self.user_date_label.pack(fill="x", padx=10, pady=5)
-        
-        # Mensaje inicial
-        self.placeholder_label = ctk.CTkLabel(
-            self.user_info_frame,
-            text="Busque un usuario para ver su información aquí.",
-            text_color="gray",
-            font=ctk.CTkFont(size=14)
-        )
-        self.placeholder_label.pack(pady=20)
         
         # Crear sección de logs dentro del panel de usuario
         self.create_log_section_in_user_panel()
@@ -901,7 +901,8 @@ class ControlIdGUI:
                     self.log_message("No se pudo descargar imagen")
                 
                 # Actualizar información del usuario en la interfaz (con imagen si está disponible)
-                self.update_user_info(usuario, ruta_imagen)
+                # Usar after() para ejecutar en el hilo principal de la GUI
+                self.root.after(0, lambda: self.update_user_info(usuario, ruta_imagen))
                 
                 # Paso 2: Procesar usuario en ControlId
                 self.log_message("Procesando usuario en ControlId...")
@@ -952,6 +953,10 @@ class ControlIdGUI:
             
             # Ocultar placeholder
             self.placeholder_label.pack_forget()
+            
+            # Mostrar frames de información
+            self.image_frame.pack(pady=10)
+            self.user_details_frame.pack(fill="x", padx=10, pady=10)
             
             # Actualizar información
             self.user_name_label.configure(text=f"Nombre: {usuario['nombre']}")
@@ -1300,6 +1305,10 @@ class ControlIdGUI:
                             
                             # Descargar imagen y asignarla
                             ruta_imagen = self.descargar_imagen_usuario(usuario['lpid'], usuario['documento'])
+                            
+                            # Actualizar información del usuario en la interfaz
+                            self.root.after(0, lambda: self.update_user_info(usuario, ruta_imagen))
+                            
                             if ruta_imagen:
                                 self.log_message("Asignando imagen actualizada...")
                                 if self.asignar_imagen_usuario(usuario_existente['id'], ruta_imagen):
