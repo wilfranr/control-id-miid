@@ -144,7 +144,7 @@ def crear_grupo_para_usuario(session: str, user_id: str, group_id: int = 2) -> b
     Args:
         session: Token de sesión
         user_id: ID del usuario
-        group_id: ID del grupo (por defecto 2)
+        group_id: ID del grupo (Definido desde el config)
 
     Returns:
         True si se creó correctamente o ya existía; False si falla.

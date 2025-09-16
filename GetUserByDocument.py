@@ -71,7 +71,7 @@ def buscar_usuario_por_documento(numero_documento: str):
             lpe.LP_STATUS_PROCESS
         FROM log_process_enroll lpe
         INNER JOIN person p ON lpe.PER_ID = p.PER_ID
-        WHERE p.PER_DOCUMENT_NUMBER = %s AND lpe.EC_ID = %s
+        WHERE p.PER_DOCUMENT_NUMBER = %s AND lpe.EC_ID = %s AND lpe.LP_STATUS_PROCESS = 1
         ORDER BY lpe.LP_CREATION_DATE DESC
         LIMIT 1
         """
