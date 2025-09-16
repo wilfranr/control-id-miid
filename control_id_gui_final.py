@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 GUI final para ControlId con CustomTkinter - Versión robusta con distribución en dos columnas.
+Versión 1.1.0 - Switch DEV/PROD implementado
 """
 
 import customtkinter as ctk
