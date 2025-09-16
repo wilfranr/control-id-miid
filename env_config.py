@@ -42,7 +42,7 @@ ENVIRONMENTS = {
             "user": "Wilfran.Rivera",
             "password": "zi4i1WFBpRX8*Bytte",
             "database": "miidcore",
-            "ec_id": 101
+            "ec_id": 3000
         },
         "azure": {
             "servidor": "yi8s81p975.database.windows.net",
@@ -50,7 +50,7 @@ ENVIRONMENTS = {
             "usuario": "MonitorOp",
             "contraseña": "4wL5E7ta5tr3*Bytte2025*",
             "stored_procedure": "dbo.GetMatchIDImgFaceByCASBId",
-            "business_context": "Itau oficinas"
+            "business_context": "MatchId"
         },
         "control_id": {
             "base_url": "http://192.168.3.37",
