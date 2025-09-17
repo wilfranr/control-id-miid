@@ -1,0 +1,3 @@
+﻿diagnostico/ export-ignore
+tests/ export-ignore
+test_*.py export-ignore
