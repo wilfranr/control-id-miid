@@ -37,7 +37,8 @@ if ($OneFile) {
     'flujo_usuario_inteligente',
     'download_image_to_sql_temp',
     'config',
-    'pyodbc'
+    'pyodbc',
+    'mysql_native_password'
   )
   $hiddenArgs = @()
   foreach ($h in $hidden) { $hiddenArgs += @('--hidden-import', $h) }

@@ -179,10 +179,54 @@ else:
         IMPORT_ERRORS.append(f"Fallback de _MEIPASS falló: {_exc}")
 
 # Cargar definición de entornos (opcional)
+def _load_env_config():
+    """Cargar configuración de entornos desde múltiples ubicaciones."""
+    # Lista de ubicaciones a buscar
+    config_paths = []
+    
+    # 1. Directorio de datos del usuario (para ejecutables)
+    if getattr(sys, 'frozen', False):
+        try:
+            import os
+            user_data_dir = Path(os.path.expanduser("~")) / "AppData" / "Local" / "ControlId"
+            config_paths.append(user_data_dir / 'env_config.py')
+        except Exception:
+            pass
+    
+    # 2. Directorio del ejecutable
+    try:
+        exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
+        exe_dir = exe_dir.parent if exe_dir else Path.cwd()
+        config_paths.append(exe_dir / 'env_config.py')
+    except Exception:
+        pass
+    
+    # 3. Directorio actual
+    config_paths.append(Path.cwd() / 'env_config.py')
+    
+    # Buscar archivo de configuración
+    for config_path in config_paths:
+        if config_path and config_path.exists():
+            try:
+                import importlib.util
+                spec = importlib.util.spec_from_file_location("env_config", config_path)
+                env_mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(env_mod)
+                return getattr(env_mod, 'ENVIRONMENTS', {}), getattr(env_mod, 'ACTIVE_ENV', 'DEV')
+            except Exception as e:
+                print(f"[DEBUG] No se pudo cargar {config_path}: {e}")
+                continue
+    
+    return None, None
+
 try:
-    from env_config import ENVIRONMENTS, ACTIVE_ENV
+    ENVIRONMENTS, ACTIVE_ENV = _load_env_config()
+    if ENVIRONMENTS is None:
+        raise Exception("No se encontró configuración")
     CURRENT_ENV = ACTIVE_ENV if ACTIVE_ENV else "DEV"
+    print(f"[DEBUG] Configuración cargada desde archivo, entorno activo: {CURRENT_ENV}")
 except Exception as _e_env:
+    print(f"[DEBUG] Usando configuración por defecto: {_e_env}")
     ENVIRONMENTS = {
         "DEV": {
             "azure": {},
@@ -265,22 +309,55 @@ def _get_env_config_path() -> Path:
     candidates = []
     if env_path and env_path.exists():
         candidates.append(env_path)
+    
+    # Para ejecutables, usar directorio de datos del usuario
+    if getattr(sys, 'frozen', False):
+        try:
+            import os
+            # Usar directorio de datos del usuario para guardar configuración
+            user_data_dir = Path(os.path.expanduser("~")) / "AppData" / "Local" / "ControlId"
+            user_data_dir.mkdir(parents=True, exist_ok=True)
+            candidates.insert(0, user_data_dir / 'env_config.py')
+        except Exception:
+            pass
+    
     try:
         exe_dir = Path(getattr(sys, 'frozen', False) and getattr(sys, 'executable', '') or __file__).resolve()
         exe_dir = exe_dir.parent if exe_dir else Path.cwd()
         candidates.extend([exe_dir / 'env_config.py', Path.cwd() / 'env_config.py'])
     except Exception:
         candidates.append(Path.cwd() / 'env_config.py')
+    
     for path in candidates:
         if path and path.exists():
             return path
-    # Fallback: primera opción
-    return candidates[-1]
+    
+    # Si no existe ningún archivo, usar el primer candidato disponible para escritura
+    for path in candidates:
+        try:
+            if path and path.parent.exists() and os.access(path.parent, os.W_OK):
+                return path
+        except Exception:
+            continue
+    
+    # Fallback: directorio de datos del usuario
+    try:
+        import os
+        user_data_dir = Path(os.path.expanduser("~")) / "AppData" / "Local" / "ControlId"
+        user_data_dir.mkdir(parents=True, exist_ok=True)
+        return user_data_dir / 'env_config.py'
+    except Exception:
+        return Path.cwd() / 'env_config.py'
 
 def _persist_environment_dict(environments: dict, active_env: str) -> bool:
     """Escribir env_config.py con ACTIVE_ENV y ENVIRONMENTS dados."""
     try:
         path = _get_env_config_path()
+        print(f"[DEBUG] Guardando configuración en: {path}")
+        
+        # Asegurar que el directorio padre existe
+        path.parent.mkdir(parents=True, exist_ok=True)
+        
         header = "\"\"\"\nDefinición de entornos para la aplicación.\n\nEste archivo es generado/actualizado por la GUI.\n\"\"\"\n\n"
         content = header
         content += f'ACTIVE_ENV = "{active_env}"\n\n'
@@ -288,8 +365,10 @@ def _persist_environment_dict(environments: dict, active_env: str) -> bool:
         env_json = json.dumps(environments, ensure_ascii=False, indent=4)
         content += f"ENVIRONMENTS = {env_json}\n"
         path.write_text(content, encoding='utf-8')
+        print(f"[DEBUG] Configuración guardada exitosamente en: {path}")
         return True
-    except Exception:
+    except Exception as e:
+        print(f"[ERROR] No se pudo guardar configuración: {e}")
         return False
 
 def _update_env_in_file(env_name: str, sections: dict) -> bool:
@@ -1075,7 +1154,11 @@ class ControlIdGUI:
                 user=cfg.get('user'),
                 password=cfg.get('password'),
                 database=cfg.get('database'),
-                connection_timeout=5
+                connection_timeout=5,
+                auth_plugin='mysql_native_password',
+                autocommit=True,
+                use_unicode=True,
+                charset='utf8mb4'
             )
             try:
                 cur = cnx.cursor()
@@ -1189,12 +1272,41 @@ class ControlIdGUI:
         try:
             import requests
             import time
-            from config import CONTROL_ID_CONFIG
             
+            # Usar la misma lógica de resolución de configuración que flujo_usuario_inteligente
+            def _resolve_control_id_config():
+                """Resolver config de ControlId desde env_config[ACTIVE_ENV] si existe; fallback a config.CONTROL_ID_CONFIG."""
+                try:
+                    import os as _os
+                    env_name = str((_os.environ.get('ACTIVE_ENV') or globals().get('ACTIVE_ENV') or 'DEV')).upper()
+                    try:
+                        import importlib as _importlib
+                        _env = _importlib.import_module('env_config')
+                        envs_live = dict(getattr(_env, 'ENVIRONMENTS', {}) or {})
+                    except Exception:
+                        envs_live = dict(globals().get('ENVIRONMENTS', {}) or {})
+                    ci = dict(((envs_live.get(env_name) or {}).get('control_id')) or {})
+                    if ci:
+                        if 'default_group_id' not in ci:
+                            ci['default_group_id'] = 2
+                        return ci
+                except Exception:
+                    pass
+                try:
+                    from config import CONTROL_ID_CONFIG as _CFG_CONTROL_ID
+                    ci = dict(_CFG_CONTROL_ID)
+                    if 'default_group_id' not in ci:
+                        ci['default_group_id'] = 2
+                    return ci
+                except Exception:
+                    return {'base_url': '', 'login': '', 'password': '', 'default_group_id': 2}
+            
+            cfg = _resolve_control_id_config()
             self.log_message(f"Asignando imagen al usuario ID: {user_id}")
             
             # Usar el endpoint correcto según la documentación
-            url = f"{CONTROL_ID_CONFIG['base_url']}/user_set_image.fcgi"
+            url = f"{cfg['base_url']}/user_set_image.fcgi"
+            self.log_message(f"URL de asignación de imagen: {url}")
             
             # Generar timestamp actual
             timestamp = str(int(time.time()))
@@ -2001,7 +2113,11 @@ class ModalPruebasConexiones:
                 user=cfg.get('user'),
                 password=cfg.get('password'),
                 database=cfg.get('database'),
-                connection_timeout=10
+                connection_timeout=10,
+                auth_plugin='mysql_native_password',
+                autocommit=True,
+                use_unicode=True,
+                charset='utf8mb4'
             )
             try:
                 cur = cnx.cursor()

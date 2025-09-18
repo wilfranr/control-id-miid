@@ -37,7 +37,7 @@ AZURE_CONFIG = {
 }
 
 CONTROL_ID_CONFIG = {
-    "base_url": "http://192.168.3.37",
+    "base_url": "http://10.8.0.2",
     "login": "admin",
     "password": "admin"
 }

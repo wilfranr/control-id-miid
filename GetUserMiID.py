@@ -107,6 +107,15 @@ def conectar_miid():
                 conn_args["port"] = int(conn_args["port"])
         except Exception:
             pass
+        
+        # Agregar parámetros para manejar problemas de autenticación
+        conn_args.update({
+            'auth_plugin': 'mysql_native_password',
+            'autocommit': True,
+            'use_unicode': True,
+            'charset': 'utf8mb4'
+        })
+        
         conexion = mysql.connector.connect(**conn_args)
         try:
             cur = conexion.cursor()
