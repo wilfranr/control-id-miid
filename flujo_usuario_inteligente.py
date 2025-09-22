@@ -11,14 +11,62 @@ import requests
 import time
 import json
 import logging
+import configparser
+import os
+import sys
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Tuple
 from GetUserMiID import obtener_ultimo_usuario_midd
-from config import CONTROL_ID_CONFIG as _CFG_CONTROL_ID
-try:
-    from env_config import ENVIRONMENTS as _ENVIRONMENTS, ACTIVE_ENV as _ACTIVE_ENV
-except Exception:
-    _ENVIRONMENTS, _ACTIVE_ENV = {}, None
+
+# --- Nuevo sistema de configuración --- #
+
+_config = None
+_active_env_config = None
+
+def _get_base_path() -> str:
+    """Obtiene la ruta base, ya sea para un script o un ejecutable de PyInstaller."""
+    if getattr(sys, 'frozen', False):
+        return os.path.dirname(sys.executable)
+    else:
+        return os.path.dirname(os.path.realpath(__file__))
+
+def load_config() -> Tuple[configparser.ConfigParser, Dict[str, Any]]:
+    """Carga config.ini y devuelve el parser y la configuración del entorno activo."""
+    global _config, _active_env_config
+    if _config and _active_env_config:
+        return _config, _active_env_config
+
+    base_path = _get_base_path()
+    config_path = os.path.join(base_path, 'config.ini')
+    
+    config = configparser.ConfigParser()
+    config.read(config_path, encoding='utf-8')
+    
+    active_env_name = config.get('Service', 'ActiveEnv', fallback='PROD').upper()
+    
+    if active_env_name not in config:
+        raise ValueError(f"La sección del entorno '[{active_env_name}]' no se encuentra en config.ini")
+
+    env_config = {}
+    for key, value in config.items(active_env_name):
+        # Convertir claves como 'miid.host' en un diccionario anidado
+        parts = key.split('.', 1)
+        if len(parts) == 2:
+            section, option = parts
+            if section not in env_config:
+                env_config[section] = {}
+            env_config[section][option] = value
+        else:
+            env_config[key] = value
+    
+    _config = config
+    _active_env_config = env_config
+    return _config, _active_env_config
+
+# Inicializar la configuración al importar el módulo
+# load_config() -> Se llamará explícitamente desde el servicio
+
+# --- Fin del nuevo sistema de configuración ---
 
 # Configuración de logging
 logging.basicConfig(
@@ -27,40 +75,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def set_control_id_config(new_config: Dict[str, Any]) -> None:
-    """Permite actualizar la configuración de ControlId en caliente.
+def _get_control_id_config() -> Dict[str, Any]:
+    """Devuelve la configuración de ControlId del entorno activo."""
+    _, env_config = load_config()
+    config = env_config.get('control_id', {})
+    # Asegurar valores por defecto
+    config.setdefault('base_url', '')
+    config.setdefault('login', '')
+    config.setdefault('password', '')
+    config.setdefault('default_group_id', 2)
+    return config
 
-    Esto es útil cuando la GUI guarda un nuevo `config.py` y queremos que
-    las funciones de este módulo usen los valores recientes sin reiniciar.
-    """
-    global _CFG_CONTROL_ID
-    _CFG_CONTROL_ID = new_config
-
-def _resolve_control_id_config() -> Dict[str, Any]:
-    """Resolver config de ControlId desde env_config[ACTIVE_ENV] si existe; fallback a config.CONTROL_ID_CONFIG."""
-    try:
-        import os as _os
-        env_name = str((_os.environ.get('ACTIVE_ENV') or _ACTIVE_ENV or 'DEV')).upper()
-        try:
-            import importlib as _importlib
-            _env = _importlib.import_module('env_config')
-            envs_live = dict(getattr(_env, 'ENVIRONMENTS', {}) or {})
-        except Exception:
-            envs_live = dict(_ENVIRONMENTS or {})
-        ci = dict(((envs_live.get(env_name) or {}).get('control_id')) or {})
-        if ci:
-            if 'default_group_id' not in ci:
-                ci['default_group_id'] = 2
-            return ci
-    except Exception:
-        pass
-    try:
-        ci = dict(_CFG_CONTROL_ID)
-        if 'default_group_id' not in ci:
-            ci['default_group_id'] = 2
-        return ci
-    except Exception:
-        return {'base_url': '', 'login': '', 'password': '', 'default_group_id': 2}
 
 def buscar_usuario_por_registration(session: str, registration: str) -> Optional[Dict[str, Any]]:
     """
@@ -76,7 +101,7 @@ def buscar_usuario_por_registration(session: str, registration: str) -> Optional
     try:
         logger.info(f"Buscando usuario con documento: {registration}")
         
-        cfg = _resolve_control_id_config()
+        cfg = _get_control_id_config()
         url = f"{cfg['base_url']}/load_objects.fcgi"
         params = {'session': session}
         payload = {
@@ -129,7 +154,7 @@ def crear_usuario_nuevo(session: str, nombre: str, documento: str) -> Optional[s
     try:
         logger.info(f"Creando nuevo usuario: {nombre} ({documento})")
         
-        cfg = _resolve_control_id_config()
+        cfg = _get_control_id_config()
         url = f"{cfg['base_url']}/create_objects.fcgi"
         params = {'session': session}
         payload = {
@@ -187,7 +212,7 @@ def crear_grupo_para_usuario(session: str, user_id: str, group_id: int = 2) -> b
     try:
         # Verificar si ya existe la relación
         try:
-            cfg = _resolve_control_id_config()
+            cfg = _get_control_id_config()
             url_check = f"{cfg['base_url']}/load_objects.fcgi"
             params_check = {'session': session}
             payload_check = {"object": "user_groups"}
@@ -275,7 +300,7 @@ def modificar_usuario_existente(session: str, user_id: str, nombre: str, documen
     try:
         logger.info(f"Modificando usuario ID {user_id}: {nombre} ({documento})")
         
-        cfg = _resolve_control_id_config()
+        cfg = _get_control_id_config()
         url = f"{cfg['base_url']}/create_or_modify_objects.fcgi"
         params = {'session': session}
         payload = {
@@ -325,7 +350,7 @@ def asignar_imagen_usuario(session: str, user_id: str, ruta_imagen: str) -> bool
         logger.info(f"Asignando imagen al usuario ID: {user_id}")
         
         # Usar el endpoint correcto según la documentación
-        cfg = _resolve_control_id_config()
+        cfg = _get_control_id_config()
         url = f"{cfg['base_url']}/user_set_image.fcgi"
         
         # Generar timestamp actual
@@ -404,7 +429,7 @@ def procesar_usuario_inteligente(session: str, nombre: str, documento: str) -> O
             if modificar_usuario_existente(session, str(user_id), nombre, documento):
                 logger.info(f"Usuario modificado exitosamente. ID: {user_id}")
                 # Asegurar asignación de grupo por defecto
-                cfg_ci = _resolve_control_id_config()
+                cfg_ci = _get_control_id_config()
                 _gid = int((cfg_ci or {}).get('default_group_id', 2))
                 if not crear_grupo_para_usuario(session, str(user_id), _gid):
                     logger.warning("No se pudo asignar el grupo al usuario modificado")
@@ -419,7 +444,7 @@ def procesar_usuario_inteligente(session: str, nombre: str, documento: str) -> O
             if user_id:
                 logger.info(f"Usuario creado exitosamente. ID: {user_id}")
                 # Asignar grupo por defecto al usuario recién creado
-                cfg_ci = _resolve_control_id_config()
+                cfg_ci = _get_control_id_config()
                 _gid = int((cfg_ci or {}).get('default_group_id', 2))
                 if not crear_grupo_para_usuario(session, user_id, _gid):
                     logger.warning("No se pudo asignar el grupo al nuevo usuario")
@@ -474,7 +499,7 @@ def obtener_sesion():
     try:
         logger.info("Obteniendo sesión de ControlId...")
         
-        cfg = _resolve_control_id_config()
+        cfg = _get_control_id_config()
         url = f"{cfg['base_url']}/login.fcgi"
         payload = {
             "login": cfg['login'],
@@ -542,6 +567,7 @@ def main():
         return False
 
 if __name__ == "__main__":
+    # Este bloque solo se ejecuta cuando el script es el punto de entrada principal
     success = main()
     if success:
         print("\n[EXITO] Proceso completado exitosamente")

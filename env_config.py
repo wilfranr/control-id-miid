@@ -53,7 +53,7 @@ ENVIRONMENTS = {
             "business_context": "MatchId"
         },
         "control_id": {
-            "base_url": "http://10.8.0.3",
+            "base_url": "http://192.168.3.37",
             "login": "admin",
             "password": "admin",
             "default_group_id": 1

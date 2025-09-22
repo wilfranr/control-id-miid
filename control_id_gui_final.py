@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 GUI final para ControlId con CustomTkinter - Versión robusta con distribución en dos columnas.
+Versión 1.1.0 - Switch DEV/PROD implementado
 """
 
 import customtkinter as ctk
@@ -11,6 +12,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 import json
+import os
 import sys
 from PIL import Image, ImageTk
 
@@ -71,11 +73,23 @@ Safe_flujo = _safe_import(
     ),
 )
 if Safe_flujo:
-    obtener_sesion = Safe_flujo.obtener_sesion
-    procesar_usuario_inteligente = Safe_flujo.procesar_usuario_inteligente
-    buscar_usuario_por_registration = Safe_flujo.buscar_usuario_por_registration
-    set_control_id_config = Safe_flujo.set_control_id_config
-    crear_grupo_para_usuario = Safe_flujo.crear_grupo_para_usuario
+    try:
+        obtener_sesion = Safe_flujo.obtener_sesion  # crítico
+    except AttributeError as _e:
+        IMPORT_ERRORS.append(f"flujo_usuario_inteligente sin obtener_sesion: {_e}")
+    try:
+        procesar_usuario_inteligente = Safe_flujo.procesar_usuario_inteligente
+    except AttributeError:
+        pass
+    try:
+        buscar_usuario_por_registration = Safe_flujo.buscar_usuario_por_registration
+    except AttributeError:
+        pass
+    # Opcionales: solo definir si existen
+    if hasattr(Safe_flujo, 'set_control_id_config'):
+        set_control_id_config = getattr(Safe_flujo, 'set_control_id_config')
+    if hasattr(Safe_flujo, 'crear_grupo_para_usuario'):
+        crear_grupo_para_usuario = getattr(Safe_flujo, 'crear_grupo_para_usuario')
 
 Safe_download = _safe_import(
     "download_image_to_sql_temp",
@@ -2205,3 +2219,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
